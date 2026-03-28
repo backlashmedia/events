@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BACKLASH MEDIA EVENTS</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <script data-goatcounter="https://backlashmedia.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <style>
     :root {
       --black:  #05020f;
@@ -126,7 +127,7 @@
       transition: transform 0.15s, box-shadow 0.15s;
     }
     .featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
-    .featured-img-side { position: relative; overflow: hidden; min-height: 320px; }
+    .featured-img-side { position: relative; overflow: hidden; min-height: 320px; cursor: pointer; }
     .featured-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
     .featured-card:hover .featured-img { transform: scale(1.04); }
     .featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
@@ -316,7 +317,7 @@
     <p class="subscribe-sub">Get updates on new events, announcements, and community news. No spam. Unsubscribe anytime.</p>
     <div class="subscribe-form" id="subscribeForm">
       <input class="subscribe-input" id="emailInput" type="email" placeholder="YOUR@EMAIL.COM" />
-      <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">JOIN</button>
+      <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">&#9658; JOIN</button>
     </div>
     <p class="subscribe-error" id="subscribeError">PLEASE ENTER A VALID EMAIL ADDRESS.</p>
     <p class="subscribe-confirm" id="subscribeConfirm">YOU ARE IN! SEE YOU AT THE GATHERING.</p>
@@ -333,7 +334,7 @@
   <div class="modal" id="modal">
     <div class="modal-bar">
       <span class="modal-bar-title" id="modalBarTitle">EVENT DATA</span>
-      <button class="modal-close" onclick="closeModalDirect()">X CLOSE</button>
+      <button class="modal-close" onclick="closeModalDirect()">&#10005; CLOSE</button>
     </div>
     <div id="modalImgWrap"></div>
     <div class="modal-body">
@@ -341,7 +342,7 @@
       <h2 class="modal-title" id="modalTitle"></h2>
       <p class="modal-desc" id="modalDesc"></p>
       <div class="modal-info-grid" id="modalInfoGrid"></div>
-      <a href="#" class="modal-ticket-btn" id="modalBtn" target="_blank">GET TICKETS / REGISTER</a>
+      <a href="#" class="modal-ticket-btn" id="modalBtn" target="_blank" onclick="trackTicketClick()">&#9658; GET TICKETS / REGISTER</a>
       <div class="modal-pixels" id="modalPixels">
         <div class="mpx"></div><div class="mpx"></div><div class="mpx"></div>
         <div class="mpx wide"></div>
@@ -354,12 +355,27 @@
 <script>
 var GITHUB_USER = 'backlashmedia';
 var GITHUB_REPO = 'events';
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzw0WxeKc_5MIuLIQ4YYxQ9KG8L3BZVo-iToTEeJHO5dEJvYxn8uNY9nED0vlLfzOo/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyjzCtPjAzQyBZ8_-_KUcBfQzCnZtMHSJjCwIxfpRGYGTqWa74G26NCey47mPJpWsEr/exec';
 
 var DATA_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/events.json';
 var BASE_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/';
 
 var eventsData = [];
+var currentModalEvent = null;
+
+// ── GoatCounter tracking helper ──────────────────────────────────────────────
+function trackClick(path, title) {
+  if (typeof window.goatcounter === 'undefined' || !window.goatcounter.count) return;
+  window.goatcounter.count({ path: path, title: title || path, event: true });
+}
+
+// Called when Get Tickets button is clicked inside the modal
+function trackTicketClick() {
+  if (currentModalEvent) {
+    trackClick('ticket-click/' + currentModalEvent.title, 'Ticket: ' + currentModalEvent.title);
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 var rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
 function buildRainbowBar() {
@@ -430,8 +446,10 @@ function renderFeatured(ev, fi) {
     ? '<img class="featured-img" src="' + imgSrc + '" alt="' + ev.title + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
     : '';
   var phStyle = imgSrc ? 'display:none' : '';
+
+  // FIX: image side now has its own onclick + tracking, independent of the button
   document.getElementById('featuredCard').innerHTML =
-    '<div class="featured-img-side">' +
+    '<div class="featured-img-side" onclick="openModal(' + fi + ');trackClick(\'hero-image-click\',\'Hero Image: ' + ev.title.replace(/'/g,"\\'") + '\')">' +
       imgHtml +
       '<div class="featured-img-ph" style="' + phStyle + '">' + ev.emoji + '</div>' +
       '<div class="featured-img-overlay"></div>' +
@@ -445,7 +463,7 @@ function renderFeatured(ev, fi) {
         '<span class="featured-meta-row">' + ev.location + '</span>' +
         '<span class="featured-meta-row">' + ev.price + '</span>' +
       '</div>' +
-      '<button class="featured-btn" onclick="openModal(' + fi + ')">VIEW DETAILS AND TICKETS</button>' +
+      '<button class="featured-btn" onclick="openModal(' + fi + ');trackClick(\'featured-btn-click\',\'Featured Button: ' + ev.title.replace(/'/g,"\\'") + '\')">VIEW DETAILS AND TICKETS</button>' +
     '</div>';
 }
 
@@ -477,7 +495,10 @@ function renderEventCards(nonFeatured) {
           '<span class="card-press">PRESS</span>' +
         '</div>' +
       '</div>';
-    card.addEventListener('click', function() { openModal(idx); });
+    card.addEventListener('click', function() {
+      trackClick('event-card-click/' + ev.title, 'Card: ' + ev.title);
+      openModal(idx);
+    });
     grid.appendChild(card);
   });
 }
@@ -530,8 +551,14 @@ function goTo(n) {
   var dots = document.querySelectorAll('.carousel-dot');
   dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
 }
-document.getElementById('carouselPrev').addEventListener('click', function() { goTo(current - 1); });
-document.getElementById('carouselNext').addEventListener('click', function() { goTo(current + 1); });
+document.getElementById('carouselPrev').addEventListener('click', function() {
+  trackClick('gallery-prev', 'Gallery: Previous');
+  goTo(current - 1);
+});
+document.getElementById('carouselNext').addEventListener('click', function() {
+  trackClick('gallery-next', 'Gallery: Next');
+  goTo(current + 1);
+});
 
 var touchStartX = 0;
 track.parentElement.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
@@ -543,6 +570,7 @@ track.parentElement.addEventListener('touchend', function(e) {
 function openModal(i) {
   var ev = eventsData[i];
   if (!ev) return;
+  currentModalEvent = ev;
   var imgSrc = resolveImg(ev.img);
   document.getElementById('modal').style.setProperty('--mc', ev.color);
   document.getElementById('modalBarTitle').textContent = ev.tag.replace('//', '').trim() + ' DATA';
@@ -571,7 +599,7 @@ function openModal(i) {
   document.body.style.overflow = 'hidden';
 }
 function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; currentModalEvent = null; }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModalDirect(); });
 
 function handleSubscribe() {
@@ -586,6 +614,7 @@ function handleSubscribe() {
     errEl.style.display = 'block';
     return;
   }
+  trackClick('newsletter-signup', 'Newsletter Signup');
   if (!APPS_SCRIPT_URL) {
     document.getElementById('subscribeForm').style.display = 'none';
     document.getElementById('subscribeConfirm').style.display = 'block';
@@ -602,7 +631,7 @@ function handleSubscribe() {
     document.getElementById('subscribeForm').style.display = 'none';
     document.getElementById('subscribeConfirm').style.display = 'block';
   }).catch(function() {
-    btn.textContent = 'JOIN';
+    btn.textContent = '&#9658; JOIN';
     btn.disabled = false;
     errEl.textContent = 'SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
     errEl.style.display = 'block';
