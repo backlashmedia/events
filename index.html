@@ -128,8 +128,8 @@
     }
     .featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
     .featured-img-side { position: relative; overflow: hidden; min-height: 320px; cursor: pointer; }
-    .featured-img { width: 100%; height: 100%; object-fit: contain; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; background: var(--black); }
-    .featured-card:hover .featured-img { transform: scale(1.02); }
+    .featured-img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
+    .featured-card:hover .featured-img { transform: scale(1.04); }
     .featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
     .featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--panel) 100%); pointer-events: none; }
     .featured-info {
@@ -167,9 +167,9 @@
     }
     .event-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 50%); }
     .event-card:hover { transform: translate(-4px,-4px); box-shadow: 6px 6px 0 var(--card-color, var(--cyan)); }
-    .card-img-wrap { width: 100%; height: 170px; max-height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); background: var(--black); }
-    .card-img { width: 100%; height: 100%; object-fit: contain; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
-    .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.02); }
+    .card-img-wrap { width: 100%; height: 170px; max-height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); }
+    .card-img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
+    .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.05); }
     .card-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: var(--panel); }
     .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
     .card-tag { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--card-color, var(--cyan)); text-shadow: 0 0 8px var(--card-color, var(--cyan)); }
@@ -222,7 +222,7 @@
     .modal-bar-title { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; }
     .modal-close { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem; }
     .modal-close:hover { background: rgba(0,0,0,0.15); }
-    .modal-hero-img { width: 100%; height: 240px; object-fit: contain; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); background: var(--black); }
+    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; object-position: top; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
     .modal-hero-ph  { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
     .modal-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem; }
     .modal-tag   { font-size: 0.9rem; letter-spacing: 0.15em; }
@@ -320,7 +320,7 @@
       <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">&#9658; JOIN</button>
     </div>
     <p class="subscribe-error" id="subscribeError">PLEASE ENTER A VALID EMAIL ADDRESS.</p>
-    <p class="subscribe-confirm" id="subscribeConfirm">Thank you!</p>
+    <p class="subscribe-confirm" id="subscribeConfirm">THANK YOU FOR YOUR SUPPORT!</p>
   </div>
 </section>
 
