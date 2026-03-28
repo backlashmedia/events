@@ -1,0 +1,101 @@
+{
+  "siteConfig": {
+    "title": "BACKLASH MEDIA EVENTS",
+    "tagline": "Bent Stories · Proud Perspectives · Out Loud",
+    "footerCopy": "BENT STORIES · PROUD PERSPECTIVES · OUT LOUD"
+  },
+  "events": [
+    {
+      "featured": true,
+      "tag": "// MUSIC",
+      "title": "SUMMER SOUNDS CONCERT",
+      "desc": "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
+      "date": "FRI 14 AUG",
+      "time": "19:00 – 23:00",
+      "location": "Main Stage · Westpark",
+      "price": "FREE ENTRY",
+      "ticketUrl": "#",
+      "emoji": "🎶",
+      "color": "var(--yellow)",
+      "img": "images/summer-sounds.jpg"
+    },
+    {
+      "featured": false,
+      "tag": "// TALK",
+      "title": "BUILDING NEIGHBOURHOOD NETWORKS",
+      "desc": "Urban planner Amara Osei shares research on how communities strengthen local ties. Followed by open Q&A and informal drinks.",
+      "date": "SAT 15 AUG",
+      "time": "10:00 – 11:30",
+      "location": "Community Hall",
+      "price": "FREE",
+      "ticketUrl": "#",
+      "emoji": "🎤",
+      "color": "var(--purple)",
+      "img": "images/neighbourhood-talk.jpg"
+    },
+    {
+      "featured": false,
+      "tag": "// FOOD",
+      "title": "STREET FOOD MARKET",
+      "desc": "20+ local vendors serving food from around the world. Live cooking demos, tastings, and kids' activities. Vegan options at every stall.",
+      "date": "SAT–SUN 15–16 AUG",
+      "time": "12:00 – 20:00",
+      "location": "East Lawn",
+      "price": "FREE ENTRY",
+      "ticketUrl": "#",
+      "emoji": "🍕",
+      "color": "var(--cyan)",
+      "img": "images/street-food.jpg"
+    },
+    {
+      "featured": false,
+      "tag": "// ART",
+      "title": "OPEN STUDIOS TOUR",
+      "desc": "Self-guided tour through 18 local artist studios in the Arts Quarter. Pick up a map at the entrance. Artwork for sale.",
+      "date": "SAT 15 AUG",
+      "time": "14:00 – 18:00",
+      "location": "Arts Quarter",
+      "price": "FREE",
+      "ticketUrl": "#",
+      "emoji": "🎨",
+      "color": "var(--pink)",
+      "img": "images/open-studios.jpg"
+    },
+    {
+      "featured": false,
+      "tag": "// SPORT",
+      "title": "COMMUNITY SPORTS DAY",
+      "desc": "Volleyball, football, relay races, and more. Form a team or join one on the day. Medals for winners, glory for all.",
+      "date": "SUN 16 AUG",
+      "time": "09:00 – 13:00",
+      "location": "Sports Fields",
+      "price": "FREE",
+      "ticketUrl": "#",
+      "emoji": "🏐",
+      "color": "var(--green)",
+      "img": "images/sports-day.jpg"
+    },
+    {
+      "featured": false,
+      "tag": "// WORKSHOP",
+      "title": "INTRO TO URBAN GARDENING",
+      "desc": "Hands-on workshop by Groenhart Collective. Learn composting, container growing, and how to turn any balcony into a green space.",
+      "date": "SUN 16 AUG",
+      "time": "14:00 – 16:00",
+      "location": "Garden Pavilion",
+      "price": "€5 MATERIALS FEE",
+      "ticketUrl": "#",
+      "emoji": "🌿",
+      "color": "var(--orange)",
+      "img": "images/urban-gardening.jpg"
+    }
+  ],
+  "gallery": [
+    { "img": "images/gallery-1.jpg", "caption": "▸ SUMMER SOUNDS 2024", "emoji": "🎶" },
+    { "img": "images/gallery-2.jpg", "caption": "▸ OPEN STUDIOS TOUR 2024", "emoji": "🎨" },
+    { "img": "images/gallery-3.jpg", "caption": "▸ STREET FOOD MARKET 2024", "emoji": "🍕" },
+    { "img": "images/gallery-4.jpg", "caption": "▸ COMMUNITY SPORTS DAY 2024", "emoji": "🏐" },
+    { "img": "images/gallery-5.jpg", "caption": "▸ URBAN GARDENING WORKSHOP 2024", "emoji": "🌿" },
+    { "img": "images/gallery-6.jpg", "caption": "▸ CLOSING CEREMONY 2024", "emoji": "🎉" }
+  ]
+}

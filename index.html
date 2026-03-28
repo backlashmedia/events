@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -16,6 +15,7 @@
       --yellow: #ffe600;
       --purple: #b44fff;
       --green:  #39ff6e;
+      --orange: #ff8c00;
       --white:  #f0eaff;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,442 +36,298 @@
       background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
     }
 
-```
-.starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; }
-@keyframes twinkle { from{opacity:.08} to{opacity:.8} }
+    .starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; }
+    @keyframes twinkle { from{opacity:.08} to{opacity:.8} }
 
-/* ══════════════════════════════
-   RAINBOW FLAG BAR
-   Full-width row of | characters,
-   cycling through rainbow colours
-══════════════════════════════ */
-.rainbow-bar {
-  position: relative; z-index: 210;
-  width: 100%; overflow: hidden;
-  background: var(--black);
-  padding: 3px 0;
-  line-height: 1;
-  font-family: 'VT323', monospace;
-  font-size: 1.05rem;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  user-select: none;
-}
-/* individual pipe spans coloured by JS */
-.rainbow-bar span { display: inline; }
+    .rainbow-bar {
+      position: relative; z-index: 210;
+      width: 100%; overflow: hidden;
+      background: var(--black);
+      padding: 3px 0; line-height: 1;
+      font-family: 'VT323', monospace; font-size: 1.05rem;
+      letter-spacing: 0.05em; white-space: nowrap; user-select: none;
+    }
+    .rainbow-bar span { display: inline; }
 
-/* ══════════════════════════════
-   NAV
-══════════════════════════════ */
-nav {
-  position: relative; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0.8rem 2.5rem;
-  background: rgba(5,2,15,0.97);
-  border-bottom: 2px solid var(--cyan);
-}
-.nav-logo {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.48rem;
-  line-height: 1.9;
-  color: var(--cyan);
-  text-shadow: 0 0 10px var(--cyan);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-}
-.nav-right {
-  display: flex; align-items: center; gap: 1.2rem;
-}
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-size: 0.9rem; color: var(--white); text-decoration: none;
-  opacity: 0.5; letter-spacing: 0.1em; transition: opacity 0.2s;
-}
-.nav-links a:hover { opacity: 1; text-shadow: 0 0 8px var(--cyan); }
+    nav {
+      position: relative; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.8rem 2.5rem;
+      background: rgba(5,2,15,0.97);
+      border-bottom: 2px solid var(--cyan);
+    }
+    .nav-logo {
+      font-family: 'Press Start 2P', monospace; font-size: 0.48rem;
+      line-height: 1.9; color: var(--cyan); text-shadow: 0 0 10px var(--cyan);
+      text-decoration: none; letter-spacing: 0.06em;
+    }
 
-/* ══════════════════════════════
-   HERO — no sunset, stars only
-══════════════════════════════ */
-.hero {
-  position: relative; min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 5rem 2rem 4rem; overflow: hidden; z-index: 1;
-}
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 5rem 2rem 4rem; overflow: hidden; z-index: 1;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(180,79,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,255,231,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,45,120,0.07) 0%, transparent 60%),
+        var(--black);
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      animation: fadeUp 0.9s ease forwards 0.2s; opacity: 0; margin-bottom: 3rem;
+    }
+    .hero-brand {
+      font-family: 'Press Start 2P', monospace;
+      text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple);
+      margin-bottom: 1.4rem; animation: glitch 7s infinite;
+    }
+    .brand-main   { display: block; font-size: clamp(0.9rem, 2.5vw, 1.5rem); color: var(--white); margin-bottom: 0.3rem; }
+    .brand-events { display: block; font-size: clamp(2.2rem, 7vw, 5rem); color: var(--white); line-height: 1.1; }
+    @keyframes glitch {
+      0%,93%,100% { text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple); transform: none; }
+      94% { text-shadow: -4px 4px 0 var(--cyan), 4px -4px 0 var(--pink); transform: skewX(-2deg); }
+      95% { text-shadow: 4px -4px 0 var(--yellow), -4px 4px 0 var(--pink); transform: skewX(2deg); }
+      96% { text-shadow: 4px 4px 0 var(--pink); transform: none; }
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: var(--cyan);
+      text-shadow: 0 0 12px rgba(0,255,231,0.5); letter-spacing: 0.12em;
+    }
 
-/* Subtle deep space gradient instead of sunset */
-.hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(180,79,255,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,255,231,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,45,120,0.07) 0%, transparent 60%),
-    var(--black);
-}
+    /* ── LOADING STATE ── */
+    .loading-state {
+      font-family: 'Press Start 2P', monospace; font-size: 0.55rem;
+      color: var(--cyan); text-shadow: 0 0 10px var(--cyan); letter-spacing: 0.1em;
+      animation: blink 1s step-end infinite; padding: 3rem; text-align: center;
+    }
+    .error-state {
+      font-size: 1rem; color: var(--pink); text-align: center;
+      padding: 2rem; border: 1px dashed var(--pink); max-width: 500px; margin: 0 auto;
+      line-height: 1.6;
+    }
 
-.hero-content {
-  position: relative; z-index: 2; text-align: center;
-  animation: fadeUp 0.9s ease forwards 0.2s; opacity: 0;
-  margin-bottom: 3rem;
-}
+    /* ── FEATURED / COMING UP ── */
+    .featured-wrap {
+      position: relative; z-index: 2;
+      width: min(820px, 92vw); margin: 0 auto;
+      animation: fadeUp 0.9s ease forwards 0.5s; opacity: 0;
+    }
+    .featured-label {
+      font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
+      color: var(--yellow); text-shadow: 0 0 10px var(--yellow);
+      letter-spacing: 0.1em; margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .featured-label::before { content: '★'; animation: blink 1s step-end infinite; }
+    .featured-label::after  { content: '★'; animation: blink 1s step-end infinite 0.5s; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .featured-card {
+      border: 3px solid var(--yellow);
+      box-shadow: 6px 6px 0 var(--yellow), 0 0 50px rgba(255,230,0,0.12);
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      overflow: hidden; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
+    .featured-img-side { position: relative; overflow: hidden; min-height: 320px; }
+    .featured-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
+    .featured-card:hover .featured-img { transform: scale(1.04); }
+    .featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
+    .featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--panel) 100%); pointer-events: none; }
+    .featured-info {
+      background: var(--panel); padding: 2rem;
+      border-left: 3px solid var(--yellow);
+      display: flex; flex-direction: column; gap: 1rem; justify-content: center;
+    }
+    .featured-tag { font-size: 0.85rem; letter-spacing: 0.15em; }
+    .featured-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.58rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
+    .featured-desc { font-size: 1.1rem; line-height: 1.5; color: rgba(240,234,255,0.65); }
+    .featured-meta { display: flex; flex-direction: column; gap: 0.4rem; }
+    .featured-meta-row { font-size: 1rem; color: rgba(240,234,255,0.55); display: flex; align-items: center; gap: 0.4rem; }
+    .featured-btn {
+      font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
+      padding: 0.85rem 1.2rem; background: var(--yellow); color: var(--black);
+      border: none; cursor: pointer; text-decoration: none; display: inline-block;
+      margin-top: 0.3rem; transition: filter 0.15s; position: relative; overflow: hidden;
+    }
+    .featured-btn::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.06) 4px, rgba(0,0,0,0.06) 8px); }
+    .featured-btn:hover { filter: brightness(1.15); }
 
-.hero-brand {
-  font-family: 'Press Start 2P', monospace;
-  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple);
-  margin-bottom: 1.4rem;
-  animation: glitch 7s infinite;
-}
-.brand-main   { display: block; font-size: clamp(0.9rem, 2.5vw, 1.5rem); color: var(--white); margin-bottom: 0.3rem; }
-.brand-events { display: block; font-size: clamp(2.2rem, 7vw, 5rem); color: var(--white); line-height: 1.1; }
+    /* ── EVENTS ── */
+    #events { position: relative; z-index: 1; padding: 4rem 2.5rem; }
+    .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .section-title {
+      font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.6vw, 0.95rem);
+      color: var(--yellow); text-shadow: 3px 3px 0 rgba(255,230,0,0.25), 0 0 20px var(--yellow); white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--yellow), transparent); }
+    .section-count { font-size: 1rem; color: var(--yellow); opacity: 0.4; }
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.2rem; }
+    .event-card {
+      background: var(--panel); border: 2px solid var(--card-color, var(--cyan));
+      cursor: pointer; overflow: hidden; display: flex; flex-direction: column;
+      transition: transform 0.15s, box-shadow 0.15s; position: relative;
+    }
+    .event-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 50%); }
+    .event-card:hover { transform: translate(-4px,-4px); box-shadow: 6px 6px 0 var(--card-color, var(--cyan)); }
+    .card-img-wrap { width: 100%; height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); }
+    .card-img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
+    .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.05); }
+    .card-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: var(--panel); }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .card-tag { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--card-color, var(--cyan)); text-shadow: 0 0 8px var(--card-color, var(--cyan)); }
+    .card-title { font-family: 'Press Start 2P', monospace; font-size: 0.58rem; line-height: 1.8; color: var(--white); }
+    .card-detail { font-size: 0.95rem; color: rgba(240,234,255,0.55); }
+    .card-footer { margin-top: auto; padding-top: 0.8rem; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+    .card-cta { font-size: 0.85rem; color: var(--card-color, var(--cyan)); text-shadow: 0 0 6px var(--card-color, var(--cyan)); }
+    .card-press { font-size: 0.75rem; color: rgba(255,255,255,0.2); animation: blink 1.2s step-end infinite; }
 
-@keyframes glitch {
-  0%,93%,100% { text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple); transform: none; }
-  94% { text-shadow: -4px 4px 0 var(--cyan), 4px -4px 0 var(--pink); transform: skewX(-2deg); }
-  95% { text-shadow: 4px -4px 0 var(--yellow), -4px 4px 0 var(--pink); transform: skewX(2deg); }
-  96% { text-shadow: 4px 4px 0 var(--pink); transform: none; }
-}
+    /* ── GALLERY ── */
+    #gallery { position: relative; z-index: 1; padding: 0 2.5rem 4rem; }
+    #gallery .section-title { color: var(--purple); text-shadow: 3px 3px 0 rgba(180,79,255,0.25), 0 0 20px var(--purple); }
+    #gallery .section-line  { background: linear-gradient(to right, var(--purple), transparent); }
+    .gallery-upload-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .gallery-upload-btn {
+      font-family: 'Press Start 2P', monospace; font-size: 0.48rem;
+      padding: 0.7rem 1rem; border: 2px solid var(--purple); background: transparent;
+      color: var(--purple); text-shadow: 0 0 8px var(--purple); cursor: pointer; transition: background 0.15s, color 0.15s;
+    }
+    .gallery-upload-btn:hover { background: var(--purple); color: var(--black); text-shadow: none; }
+    #galleryFileInput { display: none; }
+    .gallery-upload-note { font-size: 0.95rem; color: rgba(240,234,255,0.3); letter-spacing: 0.06em; line-height: 1.5; }
+    .carousel-wrap { position: relative; }
+    .carousel-track-outer { overflow: hidden; border: 2px solid var(--purple); box-shadow: 4px 4px 0 var(--purple); }
+    .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .carousel-slide { flex: 0 0 100%; position: relative; height: 400px; overflow: hidden; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(15deg); }
+    .carousel-slide-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem; background: var(--panel); }
+    .carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.6rem 1.2rem; background: rgba(5,2,15,0.85); border-top: 2px solid var(--purple); font-size: 1rem; color: var(--purple); text-shadow: 0 0 8px var(--purple); letter-spacing: 0.1em; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(5,2,15,0.85); border: 2px solid var(--purple); color: var(--purple); font-family: 'Press Start 2P', monospace; font-size: 0.7rem; padding: 0.8rem 1rem; cursor: pointer; text-shadow: 0 0 8px var(--purple); transition: background 0.15s; line-height: 1; }
+    .carousel-btn:hover { background: var(--purple); color: var(--black); text-shadow: none; }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
+    .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap; }
+    .carousel-dot { width: 10px; height: 10px; background: rgba(180,79,255,0.3); border: 1px solid var(--purple); cursor: pointer; transition: background 0.2s; }
+    .carousel-dot.active { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
 
-.hero-tagline {
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  color: var(--cyan);
-  text-shadow: 0 0 12px rgba(0,255,231,0.5);
-  letter-spacing: 0.12em;
-  margin-bottom: 2.5rem;
-}
+    /* ── SUBSCRIBE ── */
+    #subscribe { position: relative; z-index: 1; padding: 0 2.5rem 5rem; }
+    #subscribe .section-title { color: var(--green); text-shadow: 3px 3px 0 rgba(57,255,110,0.25), 0 0 20px var(--green); }
+    #subscribe .section-line  { background: linear-gradient(to right, var(--green), transparent); }
+    .subscribe-box { border: 3px solid var(--green); box-shadow: 6px 6px 0 var(--green), 0 0 40px rgba(57,255,110,0.08); background: var(--panel); padding: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; max-width: 640px; margin: 0 auto; }
+    .subscribe-heading { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
+    .subscribe-sub { font-size: 1.2rem; color: rgba(240,234,255,0.6); line-height: 1.5; }
+    .subscribe-form { display: flex; gap: 0; width: 100%; max-width: 480px; }
+    .subscribe-input { flex: 1; padding: 0.9rem 1.2rem; background: rgba(255,255,255,0.04); border: 2px solid var(--green); border-right: none; color: var(--white); font-family: 'VT323', monospace; font-size: 1.2rem; letter-spacing: 0.05em; outline: none; }
+    .subscribe-input::placeholder { color: rgba(57,255,110,0.35); }
+    .subscribe-input:focus { background: rgba(57,255,110,0.06); }
+    .subscribe-btn { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; padding: 0.9rem 1.2rem; background: var(--green); color: var(--black); border: 2px solid var(--green); cursor: pointer; transition: filter 0.15s; white-space: nowrap; }
+    .subscribe-btn:hover { filter: brightness(1.15); }
+    .subscribe-confirm { font-size: 1.1rem; color: var(--green); text-shadow: 0 0 8px var(--green); display: none; letter-spacing: 0.1em; }
+    .subscribe-error { font-size: 1rem; color: var(--pink); display: none; letter-spacing: 0.08em; margin-top: -0.5rem; }
 
-.hero-meta {
-  display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
-}
-.hero-meta-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
-.meta-label { font-size: 0.78rem; color: var(--purple); text-shadow: 0 0 6px var(--purple); letter-spacing: 0.15em; }
-.meta-value { font-size: 1.3rem; color: var(--white); }
+    /* ── FOOTER ── */
+    footer { position: relative; z-index: 1; border-top: 3px solid var(--cyan); padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--dark); }
+    .footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); line-height: 1.8; }
+    .footer-copy { font-size: 0.85rem; color: rgba(240,234,255,0.28); }
+    .footer-rainbow { font-size: 1rem; letter-spacing: 0.05em; }
 
-.hero-cta {
-  font-family: 'Press Start 2P', monospace; font-size: 0.65rem;
-  padding: 1rem 2rem; border: 3px solid var(--cyan); color: var(--cyan);
-  text-shadow: 0 0 10px var(--cyan);
-  box-shadow: 0 0 20px rgba(0,255,231,0.3), inset 0 0 20px rgba(0,255,231,0.05);
-  cursor: pointer; text-decoration: none; display: inline-block;
-  animation: ctaPulse 2s ease-in-out infinite; transition: all 0.15s;
-}
-@keyframes ctaPulse {
-  0%,100%{ box-shadow: 0 0 20px rgba(0,255,231,0.3), inset 0 0 20px rgba(0,255,231,0.05); }
-  50%    { box-shadow: 0 0 40px rgba(0,255,231,0.6), inset 0 0 30px rgba(0,255,231,0.1); }
-}
-.hero-cta:hover { background: var(--cyan); color: var(--black); text-shadow: none; }
+    /* ── MODAL ── */
+    .modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(5,2,15,0.93); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; backdrop-filter: blur(6px); }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal { background: var(--panel); border: 3px solid var(--mc, var(--cyan)); box-shadow: 8px 8px 0 var(--mc, var(--cyan)); max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto; transform: scale(0.92) translateY(20px); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1.2rem; background: var(--mc, var(--cyan)); color: var(--black); position: sticky; top: 0; z-index: 10; }
+    .modal-bar-title { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; }
+    .modal-close { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem; }
+    .modal-close:hover { background: rgba(0,0,0,0.15); }
+    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
+    .modal-hero-ph  { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+    .modal-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem; }
+    .modal-tag   { font-size: 0.9rem; letter-spacing: 0.15em; }
+    .modal-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.8vw, 0.9rem); line-height: 1.8; color: var(--white); }
+    .modal-desc  { font-size: 1.2rem; line-height: 1.6; color: rgba(240,234,255,0.8); }
+    .modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .modal-info-block { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px dashed rgba(255,255,255,0.1); background: var(--dark); }
+    .modal-info-label { font-size: 0.72rem; letter-spacing: 0.18em; }
+    .modal-info-value { font-size: 1.1rem; color: var(--white); }
+    .modal-ticket-btn { display: block; font-family: 'Press Start 2P', monospace; font-size: 0.6rem; text-align: center; padding: 1.1rem 2rem; color: var(--black); text-decoration: none; cursor: pointer; transition: filter 0.15s, transform 0.1s; position: relative; overflow: hidden; border: none; width: 100%; }
+    .modal-ticket-btn::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.07) 4px, rgba(255,255,255,0.07) 8px); }
+    .modal-ticket-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
+    .modal-pixels { display: flex; gap: 6px; align-items: center; justify-content: center; }
+    .mpx { width: 8px; height: 8px; opacity: 0.4; }
+    .mpx.wide { width: 16px; }
 
-/* ── FEATURED EVENT CARD ── */
-.featured-wrap {
-  position: relative; z-index: 2;
-  width: min(820px, 92vw); margin: 0 auto;
-  animation: fadeUp 0.9s ease forwards 0.5s; opacity: 0;
-}
-.featured-label {
-  font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
-  color: var(--yellow); text-shadow: 0 0 10px var(--yellow);
-  letter-spacing: 0.1em; margin-bottom: 0.8rem;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.featured-label::before { content: '★'; animation: blink 1s step-end infinite; }
-.featured-label::after  { content: '★'; animation: blink 1s step-end infinite 0.5s; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
-.featured-card {
-  border: 3px solid var(--yellow);
-  box-shadow: 6px 6px 0 var(--yellow), 0 0 50px rgba(255,230,0,0.12);
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  overflow: hidden; cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
-
-.featured-img-side { position: relative; overflow: hidden; min-height: 320px; }
-.featured-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
-.featured-card:hover .featured-img { transform: scale(1.04); }
-.featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
-.featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--panel) 100%); pointer-events: none; }
-
-.featured-info {
-  background: var(--panel); padding: 2rem;
-  border-left: 3px solid var(--yellow);
-  display: flex; flex-direction: column; gap: 1rem; justify-content: center;
-}
-.featured-tag { font-size: 0.85rem; letter-spacing: 0.15em; color: var(--yellow); text-shadow: 0 0 8px var(--yellow); }
-.featured-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.58rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
-.featured-desc { font-size: 1.1rem; line-height: 1.5; color: rgba(240,234,255,0.65); }
-.featured-meta { display: flex; flex-direction: column; gap: 0.4rem; }
-.featured-meta-row { font-size: 1rem; color: rgba(240,234,255,0.55); display: flex; align-items: center; gap: 0.4rem; }
-.featured-btn {
-  font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
-  padding: 0.85rem 1.2rem; background: var(--yellow); color: var(--black);
-  border: none; cursor: pointer; text-decoration: none; display: inline-block;
-  margin-top: 0.3rem; transition: filter 0.15s; position: relative; overflow: hidden;
-}
-.featured-btn::after {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.06) 4px, rgba(0,0,0,0.06) 8px);
-}
-.featured-btn:hover { filter: brightness(1.15); }
-
-/* ══════════════════════════════
-   EVENTS SECTION
-══════════════════════════════ */
-#events { position: relative; z-index: 1; padding: 4rem 2.5rem 4rem; }
-.section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
-.section-title {
-  font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.6vw, 0.95rem);
-  color: var(--yellow); text-shadow: 3px 3px 0 rgba(255,230,0,0.25), 0 0 20px var(--yellow); white-space: nowrap;
-}
-.section-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--yellow), transparent); }
-.section-count { font-size: 1rem; color: var(--yellow); opacity: 0.4; }
-
-.events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.2rem; }
-
-.event-card {
-  background: var(--panel); border: 2px solid var(--card-color, var(--cyan));
-  cursor: pointer; overflow: hidden; display: flex; flex-direction: column;
-  transition: transform 0.15s, box-shadow 0.15s; position: relative;
-}
-.event-card::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 50%);
-}
-.event-card:hover { transform: translate(-4px,-4px); box-shadow: 6px 6px 0 var(--card-color, var(--cyan)); }
-.event-card:active { transform: none; box-shadow: none; }
-
-.card-img-wrap { width: 100%; height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); }
-.card-img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
-.event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.05); }
-.card-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: var(--panel); }
-
-.card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-.card-tag { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--card-color, var(--cyan)); text-shadow: 0 0 8px var(--card-color, var(--cyan)); }
-.card-title { font-family: 'Press Start 2P', monospace; font-size: 0.58rem; line-height: 1.8; color: var(--white); }
-.card-detail { font-size: 0.95rem; color: rgba(240,234,255,0.55); }
-.card-footer {
-  margin-top: auto; padding-top: 0.8rem;
-  border-top: 1px dashed rgba(255,255,255,0.1);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.card-cta { font-size: 0.85rem; color: var(--card-color, var(--cyan)); text-shadow: 0 0 6px var(--card-color, var(--cyan)); }
-.card-press { font-size: 0.75rem; color: rgba(255,255,255,0.2); animation: blink 1.2s step-end infinite; }
-
-/* ══════════════════════════════
-   GALLERY CAROUSEL
-══════════════════════════════ */
-#gallery { position: relative; z-index: 1; padding: 0 2.5rem 4rem; }
-#gallery .section-title { color: var(--purple); text-shadow: 3px 3px 0 rgba(180,79,255,0.25), 0 0 20px var(--purple); }
-#gallery .section-line  { background: linear-gradient(to right, var(--purple), transparent); }
-
-.carousel-wrap { position: relative; }
-.carousel-track-outer { overflow: hidden; border: 2px solid var(--purple); box-shadow: 4px 4px 0 var(--purple); }
-.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-.carousel-slide { flex: 0 0 100%; position: relative; height: 400px; overflow: hidden; }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(15deg); }
-.carousel-slide-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem; background: var(--panel); }
-.carousel-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 0.6rem 1.2rem; background: rgba(5,2,15,0.85); border-top: 2px solid var(--purple);
-  font-size: 1rem; color: var(--purple); text-shadow: 0 0 8px var(--purple); letter-spacing: 0.1em;
-}
-.carousel-btn {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-  background: rgba(5,2,15,0.85); border: 2px solid var(--purple); color: var(--purple);
-  font-family: 'Press Start 2P', monospace; font-size: 0.7rem;
-  padding: 0.8rem 1rem; cursor: pointer; text-shadow: 0 0 8px var(--purple);
-  transition: background 0.15s; line-height: 1;
-}
-.carousel-btn:hover { background: var(--purple); color: var(--black); text-shadow: none; }
-.carousel-btn.prev { left: -20px; }
-.carousel-btn.next { right: -20px; }
-.carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.2rem; }
-.carousel-dot { width: 10px; height: 10px; background: rgba(180,79,255,0.3); border: 1px solid var(--purple); cursor: pointer; transition: background 0.2s; }
-.carousel-dot.active { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
-
-/* ══════════════════════════════
-   SUBSCRIBE
-══════════════════════════════ */
-#subscribe { position: relative; z-index: 1; padding: 0 2.5rem 5rem; }
-#subscribe .section-title { color: var(--green); text-shadow: 3px 3px 0 rgba(57,255,110,0.25), 0 0 20px var(--green); }
-#subscribe .section-line  { background: linear-gradient(to right, var(--green), transparent); }
-
-.subscribe-box {
-  border: 3px solid var(--green); box-shadow: 6px 6px 0 var(--green), 0 0 40px rgba(57,255,110,0.08);
-  background: var(--panel); padding: 3rem;
-  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-  text-align: center; max-width: 640px; margin: 0 auto;
-}
-.subscribe-heading { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
-.subscribe-sub { font-size: 1.2rem; color: rgba(240,234,255,0.6); line-height: 1.5; }
-.subscribe-form { display: flex; gap: 0; width: 100%; max-width: 480px; }
-.subscribe-input {
-  flex: 1; padding: 0.9rem 1.2rem;
-  background: rgba(255,255,255,0.04); border: 2px solid var(--green); border-right: none;
-  color: var(--white); font-family: 'VT323', monospace; font-size: 1.2rem; letter-spacing: 0.05em; outline: none;
-}
-.subscribe-input::placeholder { color: rgba(57,255,110,0.35); }
-.subscribe-input:focus { background: rgba(57,255,110,0.06); }
-.subscribe-btn {
-  font-family: 'Press Start 2P', monospace; font-size: 0.55rem;
-  padding: 0.9rem 1.2rem; background: var(--green); color: var(--black);
-  border: 2px solid var(--green); cursor: pointer; transition: filter 0.15s; white-space: nowrap;
-}
-.subscribe-btn:hover { filter: brightness(1.15); }
-.subscribe-confirm { font-size: 1.1rem; color: var(--green); text-shadow: 0 0 8px var(--green); display: none; letter-spacing: 0.1em; }
-.subscribe-note { font-size: 0.85rem; color: rgba(240,234,255,0.22); letter-spacing: 0.08em; }
-
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
-footer {
-  position: relative; z-index: 1; border-top: 3px solid var(--cyan); padding: 1.8rem 2.5rem;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-  background: var(--dark);
-}
-.footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); line-height: 1.8; }
-.footer-copy { font-size: 0.85rem; color: rgba(240,234,255,0.28); }
-.footer-rainbow { font-size: 1rem; letter-spacing: 0.05em; }
-
-/* ══════════════════════════════
-   MODAL
-══════════════════════════════ */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 500; background: rgba(5,2,15,0.93);
-  display: flex; align-items: center; justify-content: center; padding: 2rem;
-  opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s;
-  backdrop-filter: blur(6px);
-}
-.modal-overlay.open { opacity: 1; visibility: visible; }
-.modal {
-  background: var(--panel); border: 3px solid var(--mc, var(--cyan));
-  box-shadow: 8px 8px 0 var(--mc, var(--cyan));
-  max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto;
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-}
-.modal-overlay.open .modal { transform: scale(1) translateY(0); }
-.modal-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.6rem 1.2rem; background: var(--mc, var(--cyan)); color: var(--black);
-  position: sticky; top: 0; z-index: 10;
-}
-.modal-bar-title { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; }
-.modal-close { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem; }
-.modal-close:hover { background: rgba(0,0,0,0.15); }
-.modal-hero-img { width: 100%; height: 240px; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
-.modal-hero-ph  { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; border-bottom: 3px solid var(--mc, var(--cyan)); }
-.modal-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem; }
-.modal-tag   { font-size: 0.9rem; letter-spacing: 0.15em; }
-.modal-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.8vw, 0.9rem); line-height: 1.8; color: var(--white); }
-.modal-desc  { font-size: 1.2rem; line-height: 1.6; color: rgba(240,234,255,0.8); }
-.modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-.modal-info-block { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px dashed rgba(255,255,255,0.1); }
-.modal-info-label { font-size: 0.72rem; letter-spacing: 0.18em; }
-.modal-info-value { font-size: 1.1rem; color: var(--white); }
-.modal-ticket-btn {
-  display: block; font-family: 'Press Start 2P', monospace; font-size: 0.6rem;
-  text-align: center; padding: 1.1rem 2rem; color: var(--black);
-  text-decoration: none; cursor: pointer; transition: filter 0.15s, transform 0.1s;
-  position: relative; overflow: hidden; border: none; width: 100%;
-}
-.modal-ticket-btn::after {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.07) 4px, rgba(255,255,255,0.07) 8px);
-}
-.modal-ticket-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-.modal-pixels { display: flex; gap: 6px; align-items: center; justify-content: center; }
-.mpx { width: 8px; height: 8px; opacity: 0.4; }
-.mpx.wide { width: 16px; }
-
-@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-
-@media(max-width:780px){
-  .featured-card { grid-template-columns: 1fr; }
-  .featured-img-side { min-height: 200px; }
-  .featured-img-ph   { min-height: 200px; }
-  .featured-info { border-left: none; border-top: 3px solid var(--yellow); }
-  .carousel-btn.prev { left: 4px; }
-  .carousel-btn.next { right: 4px; }
-  .carousel-slide { height: 240px; }
-  #events, #gallery, #subscribe, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
-  .modal-info-grid { grid-template-columns: 1fr; }
-  .subscribe-form { flex-direction: column; }
-  .subscribe-input { border-right: 2px solid var(--green); border-bottom: none; }
-  nav { padding: 0.8rem 1.2rem; }
-}
-```
-
+    @media(max-width:780px){
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-img-side { min-height: 200px; }
+      .featured-img-ph   { min-height: 200px; }
+      .featured-info { border-left: none; border-top: 3px solid var(--yellow); }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .carousel-slide { height: 240px; }
+      #events, #gallery, #subscribe, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .modal-info-grid { grid-template-columns: 1fr; }
+      .subscribe-form { flex-direction: column; }
+      .subscribe-input { border-right: 2px solid var(--green); border-bottom: none; }
+      nav { padding: 0.8rem 1.2rem; }
+    }
   </style>
 </head>
 <body>
 
 <div class="starfield" id="starfield"></div>
-
-<!-- ══ RAINBOW FLAG BAR ══ -->
-
 <div class="rainbow-bar" id="rainbowBar"></div>
 
-<!-- ══ NAV ══ -->
-
 <nav>
-  <a href="#" class="nav-logo">BACKLASH MEDIA<br>EVENTS</a>
-  <!-- No nav links as requested -->
+  <a href="#" class="nav-logo" id="navLogo">BACKLASH MEDIA<br>EVENTS</a>
 </nav>
-
-<!-- ══ HERO ══ -->
 
 <section class="hero">
   <div class="hero-bg"></div>
-
   <div class="hero-content">
     <div class="hero-brand">
       <span class="brand-main">BACKLASH MEDIA</span>
       <span class="brand-events">EVENTS</span>
     </div>
-    <p class="hero-tagline">Bent Stories · Proud Perspectives · Out Loud</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="meta-label">▸ WHEN</span>
-        <span class="meta-value">14–16 AUG 2025</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="meta-label">▸ WHERE</span>
-        <span class="meta-value">WESTPARK, AMS</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="meta-label">▸ EDITION</span>
-        <span class="meta-value">5TH ANNUAL</span>
-      </div>
-    </div>
-    <a href="#events" class="hero-cta">▶ SEE ALL EVENTS</a>
+    <p class="hero-tagline" id="heroTagline">Bent Stories · Proud Perspectives · Out Loud</p>
   </div>
-
-  <!-- FEATURED CARD inside hero -->
-
   <div class="featured-wrap">
-    <div class="featured-label">FEATURED EVENT</div>
-    <div class="featured-card" id="featuredCard"></div>
+    <div class="featured-label">COMING UP</div>
+    <div class="featured-card" id="featuredCard">
+      <div class="loading-state">▸ LOADING EVENTS...</div>
+    </div>
   </div>
 </section>
-
-<!-- ══ ALL EVENTS ══ -->
 
 <section id="events">
   <div class="section-header">
-    <h2 class="section-title">ALL EVENTS</h2>
+    <h2 class="section-title">OTHER EVENTS</h2>
     <div class="section-line"></div>
     <span class="section-count" id="eventCount"></span>
   </div>
-  <div class="events-grid" id="eventsGrid"></div>
+  <div class="events-grid" id="eventsGrid">
+    <div class="loading-state">▸ LOADING...</div>
+  </div>
 </section>
-
-<!-- ══ GALLERY ══ -->
 
 <section id="gallery">
   <div class="section-header">
     <h2 class="section-title">GALLERY</h2>
     <div class="section-line"></div>
+  </div>
+  <div class="gallery-upload-row">
+    <button class="gallery-upload-btn" onclick="document.getElementById('galleryFileInput').click()">▶ UPLOAD PHOTOS</button>
+    <input type="file" id="galleryFileInput" accept="image/*" multiple onchange="handleGalleryUpload(event)">
+    <span class="gallery-upload-note">▸ SELECT IMAGES FROM YOUR DEVICE (SESSION ONLY)<br>▸ FOR PERMANENT PHOTOS, ADD THEM TO THE <strong>images/</strong> FOLDER IN GITHUB AND UPDATE <strong>events.json</strong></span>
   </div>
   <div class="carousel-wrap">
     <button class="carousel-btn prev" id="carouselPrev">◀</button>
@@ -483,8 +339,6 @@ footer {
   <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
-<!-- ══ SUBSCRIBE ══ -->
-
 <section id="subscribe">
   <div class="section-header">
     <h2 class="section-title">STAY IN THE LOOP</h2>
@@ -495,22 +349,18 @@ footer {
     <p class="subscribe-sub">Get updates on new events, announcements, and community news. No spam. Unsubscribe anytime.</p>
     <div class="subscribe-form" id="subscribeForm">
       <input class="subscribe-input" id="emailInput" type="email" placeholder="YOUR@EMAIL.COM" />
-      <button class="subscribe-btn" onclick="handleSubscribe()">▶ JOIN</button>
+      <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">▶ JOIN</button>
     </div>
+    <p class="subscribe-error" id="subscribeError">▸ PLEASE ENTER A VALID EMAIL ADDRESS.</p>
     <p class="subscribe-confirm" id="subscribeConfirm">✓ YOU'RE IN! SEE YOU AT THE GATHERING.</p>
-    <p class="subscribe-note">▸ Replace with your Mailchimp / ConvertKit embed</p>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-
 <footer>
   <span class="footer-logo">BACKLASH MEDIA<br>EVENTS © 2025</span>
-  <span class="footer-copy">BENT STORIES · PROUD PERSPECTIVES · OUT LOUD</span>
+  <span class="footer-copy" id="footerCopy">BENT STORIES · PROUD PERSPECTIVES · OUT LOUD</span>
   <span class="footer-rainbow" id="footerRainbow"></span>
 </footer>
-
-<!-- ══ MODAL ══ -->
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
@@ -535,25 +385,40 @@ footer {
 </div>
 
 <script>
-// ══════════════════════════════════════════════
-//  RAINBOW BAR — pipe characters left to right
-// ══════════════════════════════════════════════
-const rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
+// ══════════════════════════════════════════════════════════════
+//  ▸ CONFIGURATION — update these two lines, nothing else needed
+// ══════════════════════════════════════════════════════════════
 
+// Replace with your GitHub username and repo name.
+// The page will load events.json from this URL automatically.
+const GITHUB_USER     = 'YOUR_GITHUB_USERNAME';
+const GITHUB_REPO     = 'YOUR_REPO_NAME';
+
+// Paste your Google Apps Script Web App URL here after deploying it.
+// Leave empty ('') to disable the mailing list feature.
+const APPS_SCRIPT_URL = '';
+
+// ══════════════════════════════════════════════════════════════
+//  Everything below this line runs automatically — don't edit
+// ══════════════════════════════════════════════════════════════
+
+const DATA_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/events.json`;
+const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/`;
+
+let eventsData = [];
+
+// ── RAINBOW BAR ──
+const rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
 function buildRainbowBar() {
   const bar = document.getElementById('rainbowBar');
   const W = bar.offsetWidth || window.innerWidth;
-  // VT323 at 1.05rem ≈ ~8px per char with letter-spacing
-  const charW = 8;
-  const count = Math.ceil(W / charW) + 4;
+  const count = Math.ceil(W / 8) + 4;
   let html = '';
   for (let i = 0; i < count; i++) {
     const col = rainbowColors[Math.floor((i / count) * rainbowColors.length)];
     html += `<span style="color:${col}">|</span>`;
   }
   bar.innerHTML = html;
-
-  // Footer mini rainbow
   const footer = document.getElementById('footerRainbow');
   let fhtml = '';
   for (let i = 0; i < 28; i++) {
@@ -565,153 +430,160 @@ function buildRainbowBar() {
 buildRainbowBar();
 window.addEventListener('resize', buildRainbowBar);
 
-// ══════════════════════════════════════════════
-//  EVENT DATA
-//  Set featured: true on ONE event
-// ══════════════════════════════════════════════
-const events = [
-  {
-    featured: true,
-    tag: "// MUSIC", title: "SUMMER SOUNDS CONCERT",
-    desc: "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
-    date: "FRI 14 AUG", time: "19:00 – 23:00", location: "Main Stage · Westpark", price: "FREE ENTRY",
-    ticketUrl: "#", emoji: "🎶", color: "var(--cyan)",
-    img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000&q=75"
-  },
-  {
-    featured: false,
-    tag: "// TALK", title: "BUILDING NEIGHBOURHOOD NETWORKS",
-    desc: "Urban planner Amara Osei shares research on how communities strengthen local ties. Followed by open Q&A and informal drinks.",
-    date: "SAT 15 AUG", time: "10:00 – 11:30", location: "Community Hall", price: "FREE",
-    ticketUrl: "#", emoji: "🎤", color: "var(--purple)",
-    img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=70"
-  },
-  {
-    featured: false,
-    tag: "// FOOD", title: "STREET FOOD MARKET",
-    desc: "20+ local vendors serving food from around the world. Live cooking demos, tastings, and kids' activities. Vegan options at every stall.",
-    date: "SAT–SUN 15–16 AUG", time: "12:00 – 20:00", location: "East Lawn", price: "FREE ENTRY",
-    ticketUrl: "#", emoji: "🍕", color: "var(--yellow)",
-    img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=70"
-  },
-  {
-    featured: false,
-    tag: "// ART", title: "OPEN STUDIOS TOUR",
-    desc: "Self-guided tour through 18 local artist studios in the Arts Quarter. Pick up a map at the entrance. Artwork for sale.",
-    date: "SAT 15 AUG", time: "14:00 – 18:00", location: "Arts Quarter", price: "FREE",
-    ticketUrl: "#", emoji: "🎨", color: "var(--pink)",
-    img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=70"
-  },
-  {
-    featured: false,
-    tag: "// SPORT", title: "COMMUNITY SPORTS DAY",
-    desc: "Volleyball, football, relay races, and more. Form a team or join one on the day. Medals for winners, glory for all.",
-    date: "SUN 16 AUG", time: "09:00 – 13:00", location: "Sports Fields", price: "FREE",
-    ticketUrl: "#", emoji: "🏐", color: "var(--green)",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=70"
-  },
-  {
-    featured: false,
-    tag: "// WORKSHOP", title: "INTRO TO URBAN GARDENING",
-    desc: "Hands-on workshop by Groenhart Collective. Learn composting, container growing, and how to turn any balcony into a green space.",
-    date: "SUN 16 AUG", time: "14:00 – 16:00", location: "Garden Pavilion", price: "€5 MATERIALS FEE",
-    ticketUrl: "#", emoji: "🌿", color: "var(--green)",
-    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=70"
+// ── LOAD DATA FROM GITHUB ──
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now()); // cache-bust
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    eventsData = data.events || [];
+    renderAll(data);
+  } catch (err) {
+    console.error('Failed to load events.json:', err);
+    document.getElementById('featuredCard').innerHTML = `
+      <div class="error-state">
+        ▸ COULD NOT LOAD EVENTS<br><br>
+        Make sure GITHUB_USER and GITHUB_REPO are set correctly in index.html,
+        and that events.json exists in your repository root.<br><br>
+        <small style="opacity:0.5">${err.message}</small>
+      </div>`;
+    document.getElementById('eventsGrid').innerHTML = '';
   }
-];
+}
 
-const gallerySlides = [
-  { emoji:"🎶", caption:"▸ SUMMER SOUNDS 2024" },
-  { emoji:"🎨", caption:"▸ OPEN STUDIOS TOUR 2024" },
-  { emoji:"🍕", caption:"▸ STREET FOOD MARKET 2024" },
-  { emoji:"🏐", caption:"▸ COMMUNITY SPORTS DAY 2024" },
-  { emoji:"🌿", caption:"▸ URBAN GARDENING WORKSHOP 2024" },
-  { emoji:"🎉", caption:"▸ CLOSING CEREMONY 2024" },
-];
+function resolveImg(img) {
+  if (!img) return null;
+  // If it's already a full URL, use it directly
+  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) return img;
+  // Otherwise treat as a relative path inside the repo
+  return BASE_URL + img;
+}
 
-// ══════════════════════════════════════════════
-//  FEATURED CARD
-// ══════════════════════════════════════════════
-const featuredEv = events.find(e => e.featured) || events[0];
-const fi = events.indexOf(featuredEv);
+// ── RENDER EVERYTHING ──
+function renderAll(data) {
+  // Site config
+  if (data.siteConfig) {
+    if (data.siteConfig.tagline) document.getElementById('heroTagline').textContent = data.siteConfig.tagline;
+    if (data.siteConfig.footerCopy) document.getElementById('footerCopy').textContent = data.siteConfig.footerCopy;
+    if (data.siteConfig.title) document.title = data.siteConfig.title;
+  }
 
-document.getElementById('featuredCard').innerHTML = `
-  <div class="featured-img-side">
-    <img class="featured-img" src="${featuredEv.img}" alt="${featuredEv.title}"
-         onerror="this.style.display='none';this.nextSibling.style.display='flex'">
-    <div class="featured-img-ph" style="display:none">${featuredEv.emoji}</div>
-    <div class="featured-img-overlay"></div>
-  </div>
-  <div class="featured-info">
-    <span class="featured-tag" style="color:${featuredEv.color};text-shadow:0 0 8px ${featuredEv.color}">${featuredEv.tag}</span>
-    <h2 class="featured-title">${featuredEv.title}</h2>
-    <p class="featured-desc">${featuredEv.desc}</p>
-    <div class="featured-meta">
-      <span class="featured-meta-row">⏱ ${featuredEv.date} · ${featuredEv.time}</span>
-      <span class="featured-meta-row">📍 ${featuredEv.location}</span>
-      <span class="featured-meta-row">🎟 ${featuredEv.price}</span>
+  // Featured event
+  const featuredEv = eventsData.find(e => e.featured) || eventsData[0];
+  const fi = eventsData.indexOf(featuredEv);
+  renderFeatured(featuredEv, fi);
+
+  // Other events
+  const nonFeatured = eventsData.filter((_, i) => i !== fi);
+  document.getElementById('eventCount').textContent = `${nonFeatured.length} EVENTS`;
+  renderEventCards(nonFeatured);
+
+  // Gallery
+  if (data.gallery) renderGallery(data.gallery);
+}
+
+function renderFeatured(ev, fi) {
+  const imgSrc = resolveImg(ev.img);
+  document.getElementById('featuredCard').innerHTML = `
+    <div class="featured-img-side">
+      ${imgSrc
+        ? `<img class="featured-img" src="${imgSrc}" alt="${ev.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        : ''}
+      <div class="featured-img-ph" style="${imgSrc ? 'display:none' : ''}">${ev.emoji}</div>
+      <div class="featured-img-overlay"></div>
     </div>
-    <button class="featured-btn" onclick="openModal(${fi})">▶ VIEW DETAILS & TICKETS</button>
-  </div>`;
-
-// ══════════════════════════════════════════════
-//  EVENT CARDS (non-featured)
-// ══════════════════════════════════════════════
-const grid = document.getElementById('eventsGrid');
-const nonFeatured = events.filter((_, i) => i !== fi);
-document.getElementById('eventCount').textContent = `${nonFeatured.length} MORE`;
-
-nonFeatured.forEach(ev => {
-  const idx = events.indexOf(ev);
-  const card = document.createElement('div');
-  card.className = 'event-card';
-  card.style.setProperty('--card-color', ev.color);
-  card.innerHTML = `
-    <div class="card-img-wrap">
-      <img class="card-img" src="${ev.img}" alt="${ev.title}"
-           onerror="this.style.display='none';this.nextSibling.style.display='flex'">
-      <div class="card-img-ph" style="display:none">${ev.emoji}</div>
-    </div>
-    <div class="card-body">
-      <span class="card-tag">${ev.tag}</span>
-      <h3 class="card-title">${ev.title}</h3>
-      <span class="card-detail">⏱ ${ev.date} · ${ev.time}</span>
-      <span class="card-detail">📍 ${ev.location}</span>
-      <div class="card-footer">
-        <span class="card-cta">▶ VIEW INFO</span>
-        <span class="card-press">PRESS</span>
+    <div class="featured-info">
+      <span class="featured-tag" style="color:${ev.color};text-shadow:0 0 8px ${ev.color}">${ev.tag}</span>
+      <h2 class="featured-title">${ev.title}</h2>
+      <p class="featured-desc">${ev.desc}</p>
+      <div class="featured-meta">
+        <span class="featured-meta-row">⏱ ${ev.date} · ${ev.time}</span>
+        <span class="featured-meta-row">📍 ${ev.location}</span>
+        <span class="featured-meta-row">🎟 ${ev.price}</span>
       </div>
+      <button class="featured-btn" onclick="openModal(${fi})">▶ VIEW DETAILS & TICKETS</button>
     </div>`;
-  card.addEventListener('click', () => openModal(idx));
-  grid.appendChild(card);
-});
+}
 
-// ══════════════════════════════════════════════
-//  CAROUSEL
-// ══════════════════════════════════════════════
-const track = document.getElementById('carouselTrack');
-const dotsEl = document.getElementById('carouselDots');
-let current = 0;
+function renderEventCards(nonFeatured) {
+  const grid = document.getElementById('eventsGrid');
+  grid.innerHTML = '';
+  nonFeatured.forEach(ev => {
+    const idx = eventsData.indexOf(ev);
+    const imgSrc = resolveImg(ev.img);
+    const card = document.createElement('div');
+    card.className = 'event-card';
+    card.style.setProperty('--card-color', ev.color);
+    card.innerHTML = `
+      <div class="card-img-wrap">
+        ${imgSrc
+          ? `<img class="card-img" src="${imgSrc}" alt="${ev.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : ''}
+        <div class="card-img-ph" style="${imgSrc ? 'display:none' : ''}">${ev.emoji}</div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">${ev.tag}</span>
+        <h3 class="card-title">${ev.title}</h3>
+        <span class="card-detail">⏱ ${ev.date} · ${ev.time}</span>
+        <span class="card-detail">📍 ${ev.location}</span>
+        <div class="card-footer">
+          <span class="card-cta">▶ VIEW INFO</span>
+          <span class="card-press">PRESS</span>
+        </div>
+      </div>`;
+    card.addEventListener('click', () => openModal(idx));
+    grid.appendChild(card);
+  });
+}
 
-gallerySlides.forEach((slide, i) => {
+// ── GALLERY ──
+const track   = document.getElementById('carouselTrack');
+const dotsEl  = document.getElementById('carouselDots');
+let current   = 0;
+
+function renderGallery(slides) {
+  track.innerHTML = '';
+  dotsEl.innerHTML = '';
+  slides.forEach((slide, i) => {
+    const imgSrc = resolveImg(slide.img);
+    addCarouselSlide(imgSrc, slide.caption, slide.emoji || '🖼');
+  });
+  rebuildDots();
+  goTo(0);
+}
+
+function addCarouselSlide(src, caption, emoji) {
   const s = document.createElement('div');
   s.className = 'carousel-slide';
-  s.innerHTML = `<div class="carousel-slide-ph">${slide.emoji}</div>
-                 <div class="carousel-caption">${slide.caption}</div>`;
+  s.innerHTML = src
+    ? `<img src="${src}" alt="${caption}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+       <div class="carousel-slide-ph" style="display:none">${emoji}</div>
+       <div class="carousel-caption">${caption}</div>`
+    : `<div class="carousel-slide-ph">${emoji}</div>
+       <div class="carousel-caption">${caption}</div>`;
   track.appendChild(s);
-  const dot = document.createElement('div');
-  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-  dot.addEventListener('click', () => goTo(i));
-  dotsEl.appendChild(dot);
-});
+}
+
+function rebuildDots() {
+  dotsEl.innerHTML = '';
+  Array.from(track.children).forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+}
 
 function goTo(n) {
-  current = (n + gallerySlides.length) % gallerySlides.length;
+  const total = track.children.length;
+  if (!total) return;
+  current = (n + total) % total;
   track.style.transform = `translateX(-${current * 100}%)`;
   document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
 }
 document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
 document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+
 let touchStartX = 0;
 track.parentElement.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
 track.parentElement.addEventListener('touchend',   e => {
@@ -719,17 +591,32 @@ track.parentElement.addEventListener('touchend',   e => {
   if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
 });
 
-// ══════════════════════════════════════════════
-//  MODAL
-// ══════════════════════════════════════════════
+function handleGalleryUpload(event) {
+  Array.from(event.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const caption = '▸ ' + file.name.toUpperCase().replace(/\.[^.]+$/, '');
+      addCarouselSlide(e.target.result, caption, '🖼');
+      rebuildDots();
+      goTo(track.children.length - 1);
+    };
+    reader.readAsDataURL(file);
+  });
+  event.target.value = '';
+}
+
+// ── MODAL ──
 function openModal(i) {
-  const ev = events[i];
+  const ev = eventsData[i];
+  if (!ev) return;
+  const imgSrc = resolveImg(ev.img);
   document.getElementById('modal').style.setProperty('--mc', ev.color);
   document.getElementById('modalBarTitle').textContent = ev.tag.replace('//', '').trim() + ' DATA';
-  document.getElementById('modalImgWrap').innerHTML = `
-    <img class="modal-hero-img" src="${ev.img}" alt="${ev.title}"
-         onerror="this.style.display='none';this.nextSibling.style.display='flex'">
-    <div class="modal-hero-ph" style="background:var(--panel);border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`;
+  document.getElementById('modalImgWrap').innerHTML = imgSrc
+    ? `<img class="modal-hero-img" src="${imgSrc}" alt="${ev.title}"
+           onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display')">
+       <div class="modal-hero-ph" style="display:none;border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`
+    : `<div class="modal-hero-ph" style="border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`;
   document.getElementById('modalTag').textContent   = ev.tag;
   document.getElementById('modalTag').style.cssText = `color:${ev.color};text-shadow:0 0 8px ${ev.color}`;
   document.getElementById('modalTitle').textContent = ev.title;
@@ -762,19 +649,51 @@ function closeModal(e) { if (e.target === document.getElementById('modalOverlay'
 function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
-// ══════════════════════════════════════════════
-//  SUBSCRIBE
-// ══════════════════════════════════════════════
-function handleSubscribe() {
-  const val = document.getElementById('emailInput').value;
-  if (!val || !val.includes('@')) { document.getElementById('emailInput').style.borderColor = 'var(--pink)'; return; }
-  document.getElementById('subscribeForm').style.display = 'none';
-  document.getElementById('subscribeConfirm').style.display = 'block';
+// ── SUBSCRIBE → GOOGLE SHEETS ──
+async function handleSubscribe() {
+  const emailEl = document.getElementById('emailInput');
+  const email   = emailEl.value.trim();
+  const errEl   = document.getElementById('subscribeError');
+  const btn     = document.getElementById('subscribeBtn');
+
+  errEl.style.display = 'none';
+  emailEl.style.borderColor = 'var(--green)';
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    emailEl.style.borderColor = 'var(--pink)';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  if (!APPS_SCRIPT_URL) {
+    // No backend configured — just show confirm message locally
+    document.getElementById('subscribeForm').style.display = 'none';
+    document.getElementById('subscribeConfirm').style.display = 'block';
+    return;
+  }
+
+  btn.textContent = '▸ SENDING...';
+  btn.disabled = true;
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // Google Apps Script requires this
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    // no-cors means we can't read the response, but if it didn't throw it worked
+    document.getElementById('subscribeForm').style.display = 'none';
+    document.getElementById('subscribeConfirm').style.display = 'block';
+  } catch (err) {
+    btn.textContent = '▶ JOIN';
+    btn.disabled = false;
+    errEl.textContent = '▸ SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
+    errEl.style.display = 'block';
+  }
 }
 
-// ══════════════════════════════════════════════
-//  STARS
-// ══════════════════════════════════════════════
+// ── STARS ──
 const sf = document.getElementById('starfield');
 for (let i = 0; i < 130; i++) {
   const s = document.createElement('div'); s.className = 'star';
@@ -782,7 +701,9 @@ for (let i = 0; i < 130; i++) {
   s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+1.5).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s`;
   sf.appendChild(s);
 }
-</script>
 
+// ── BOOT ──
+loadData();
+</script>
 </body>
 </html>
