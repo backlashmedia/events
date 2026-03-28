@@ -17,7 +17,7 @@
       "ticketUrl": "#",
       "emoji": "🎶",
       "color": "var(--yellow)",
-      "img": "images/summer-sounds.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
@@ -31,7 +31,7 @@
       "ticketUrl": "#",
       "emoji": "🎤",
       "color": "var(--purple)",
-      "img": "images/neighbourhood-talk.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
@@ -45,7 +45,7 @@
       "ticketUrl": "#",
       "emoji": "🍕",
       "color": "var(--cyan)",
-      "img": "images/street-food.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
@@ -59,7 +59,7 @@
       "ticketUrl": "#",
       "emoji": "🎨",
       "color": "var(--pink)",
-      "img": "images/open-studios.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
@@ -73,7 +73,7 @@
       "ticketUrl": "#",
       "emoji": "🏐",
       "color": "var(--green)",
-      "img": "images/sports-day.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
@@ -87,15 +87,15 @@
       "ticketUrl": "#",
       "emoji": "🌿",
       "color": "var(--orange)",
-      "img": "images/urban-gardening.jpg"
+      "img": "images/image.jpg"
     }
   ],
   "gallery": [
-    { "img": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80", "caption": "▸ SUMMER SOUNDS 2024", "emoji": "🎶" },
-    { "img": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&q=80", "caption": "▸ OPEN STUDIOS TOUR 2024", "emoji": "🎨" },
-    { "img": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=80", "caption": "▸ STREET FOOD MARKET 2024", "emoji": "🍕" },
-    { "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80", "caption": "▸ COMMUNITY SPORTS DAY 2024", "emoji": "🏐" },
-    { "img": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80", "caption": "▸ URBAN GARDENING WORKSHOP 2024", "emoji": "🌿" },
-    { "img": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&q=80", "caption": "▸ CLOSING CEREMONY 2024", "emoji": "🎉" }
+    { "img": "images/image.jpg", "caption": "▸ SUMMER SOUNDS 2024", "emoji": "🎶" },
+    { "img": "images/image.jpg", "caption": "▸ OPEN STUDIOS TOUR 2024", "emoji": "🎨" },
+    { "img": "images/image.jpg", "caption": "▸ STREET FOOD MARKET 2024", "emoji": "🍕" },
+    { "img": "images/image.jpg", "caption": "▸ COMMUNITY SPORTS DAY 2024", "emoji": "🏐" },
+    { "img": "images/image.jpg", "caption": "▸ URBAN GARDENING WORKSHOP 2024", "emoji": "🌿" },
+    { "img": "images/image.jpg", "caption": "▸ CLOSING CEREMONY 2024", "emoji": "🎉" }
   ]
 }
