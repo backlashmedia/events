@@ -10,7 +10,7 @@
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE: TRANS DAY OF VISIBILITY EDITION",
       "desc": "A special XL edition of Brave Space making room for trans voices that are too often sidelined. Featuring Joseph Kearney, Diana Salles, Indie Nile, Dora Royale, Emma Voerman, Liora ten Brinke & Kaya. Pay what you can.",
-      "date": "TUE 31 MAR",
+      "date": "Tue 31 Mar",
       "time": "20:00",
       "location": "Klein Bellevue · Theater Bellevue",
       "price": "€9.50 – €19.00",
@@ -31,7 +31,7 @@
       "ticketUrl": "https://www.voordekunst.nl/projecten/19972-here-lies-lola-short-film",
       "emoji": "",
       "color": "var(--cyan)",
-      "img": "images/Pink_Beige_and_Black_Creative_Portfolio_Animated_Presentation.jpg"
+      "img": "images/Brave_Space_April2026.jpg"
     },
     {
       "featured": false,
@@ -129,7 +129,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--cyan)",
-      "img": "images/image.jpg"
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -143,7 +143,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--purple)",
-      "img": "images/generic_brave_space.jpg"
+      "img": "images/2.jpg"
     },
     {
       "featured": false,
@@ -157,7 +157,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--green)",
-      "img": "images/generic_brave_space.jpg"
+      "img": "images/3.jpg"
     },
     {
       "featured": false,
