@@ -23,7 +23,7 @@
       "featured": false,
       "tag": "// FILM",
       "title": "HERE LIES LOLA — SHORT FILM",
-      "desc": "We're making a short film and we need your support! 'Here Lies Lola' shoots 8–11 May. Back the crowdfunder on Voordekunst — sign up, donate, and help bring Lola to life.",
+      "desc": "We’re making a short film and we need your support! ‘Here Lies Lola’ shoots 8–11 May. Back the crowdfunder on Voordekunst — sign up, donate, and help bring Lola to life.",
       "date": "SHOOT: 8–11 MAY",
       "time": "Crowdfunder live now",
       "location": "Amsterdam",
@@ -36,8 +36,8 @@
     {
       "featured": false,
       "tag": "// TOUR",
-      "title": "THE BIG QUEER TOUR — RE-QUEERING AMSTERDAM'S PAST",
-      "desc": "A queer-guided walking tour through Amsterdam, reclaiming and retelling the city's hidden LGBTQ+ history. Meet at Koningsplein. All welcome.",
+      "title": "THE BIG QUEER TOUR — RE-QUEERING AMSTERDAM’S PAST",
+      "desc": "A queer-guided walking tour through Amsterdam, reclaiming and retelling the city’s hidden LGBTQ+ history. Meet at Koningsplein. All welcome.",
       "date": "SAT 29 MAR",
       "time": "12:00 – 14:00",
       "location": "Koningsplein · Amsterdam",
@@ -65,7 +65,7 @@
       "featured": false,
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE 10",
-      "desc": "The tenth edition of Backlash Media's flagship queer storytelling night at Theater Bellevue. Bold voices, real stories, proud perspectives.",
+      "desc": "The tenth edition of Backlash Media’s flagship queer storytelling night at Theater Bellevue. Bold voices, real stories, proud perspectives.",
       "date": "WED 30 APR",
       "time": "20:00",
       "location": "Theater Bellevue",
@@ -79,7 +79,7 @@
       "featured": false,
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE 11",
-      "desc": "Pride on Stage Week special edition. Brave Space takes the stage during Amsterdam's most celebrated queer week with an unforgettable night of storytelling.",
+      "desc": "Pride on Stage Week special edition. Brave Space takes the stage during Amsterdam’s most celebrated queer week with an unforgettable night of storytelling.",
       "date": "TUE 8 JUL",
       "time": "20:00",
       "location": "Theater Bellevue",
@@ -121,7 +121,7 @@
       "featured": false,
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE 14",
-      "desc": "The fourteenth edition of Amsterdam's proudest storytelling night. Brave Space closes out the year with bold voices and bent stories.",
+      "desc": "The fourteenth edition of Amsterdam’s proudest storytelling night. Brave Space closes out the year with bold voices and bent stories.",
       "date": "WED 26 NOV",
       "time": "20:00",
       "location": "Theater Bellevue",
@@ -135,7 +135,7 @@
       "featured": false,
       "tag": "// QUIZ",
       "title": "BIG GAY NAKED PUB QUIZ",
-      "desc": "Our raucously fun queer pub quiz night at Free Willy. Test your knowledge, make new friends, and win glory. No clothes required — but they're allowed.",
+      "desc": "Our raucously fun queer pub quiz night at Free Willy. Test your knowledge, make new friends, and win glory. No clothes required — but they’re allowed.",
       "date": "WED 9 APR",
       "time": "20:30",
       "location": "Free Willy",
@@ -204,47 +204,22 @@
   ],
   "gallery": [
     {
-      "img": "images/IMG_5887.jpeg",
+      "img": "images/Brave_Space_A.jpeg",
       "caption": "▸ BRAVE SPACE",
       "emoji": ""
     },
     {
-      "img": "images/IMG_3270.jpeg",
+      "img": "images/BQT_A.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    },
+    {
+      "img": "images/Brave_Space_B.jpeg",
       "caption": "▸ BRAVE SPACE",
       "emoji": ""
     },
     {
-      "img": "images/IMG_8582.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0406.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0660.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0675.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0678.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0684.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0687.jpeg",
+      "img": "images/BQT_B.jpeg",
       "caption": "▸ THE BIG QUEER TOUR",
       "emoji": ""
     }
