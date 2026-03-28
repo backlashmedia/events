@@ -36,8 +36,7 @@
       background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
     }
 
-```
-.starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; }
 @keyframes twinkle { from{opacity:.08} to{opacity:.8} }
 
@@ -307,7 +306,7 @@ nav {
 .subscribe-form { display: flex; gap: 0; width: 100%; max-width: 480px; }
 .subscribe-input {
   flex: 1; padding: 0.9rem 1.2rem;
-  background: rgba(255,255,255,0.04); border: 2px solid var(--green); border-right: none;
+  background: var(--panel); border: 2px solid var(--green); border-right: none;
   color: var(--white); font-family: 'VT323', monospace; font-size: 1.2rem; letter-spacing: 0.05em; outline: none;
 }
 .subscribe-input::placeholder { color: rgba(57,255,110,0.35); }
@@ -400,7 +399,6 @@ footer {
   .subscribe-input { border-right: 2px solid var(--green); border-bottom: none; }
   nav { padding: 0.8rem 1.2rem; }
 }
-```
 
   </style>
 </head>
@@ -445,7 +443,7 @@ footer {
 
 <section id="events">
   <div class="section-header">
-    <h2 class="section-title">ALL EVENTS</h2>
+    <h2 class="section-title">OTHER EVENTS</h2>
     <div class="section-line"></div>
     <span class="section-count" id="eventCount"></span>
   </div>
@@ -561,7 +559,7 @@ const events = [
     tag: "// MUSIC", title: "SUMMER SOUNDS CONCERT",
     desc: "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
     date: "FRI 14 AUG", time: "19:00 – 23:00", location: "Main Stage · Westpark", price: "FREE ENTRY",
-    ticketUrl: "#", emoji: "🎶", color: "var(--cyan)",
+    ticketUrl: "#", emoji: "🎶", color: "#FFE600",
     img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000&q=75"
   },
   {
@@ -569,7 +567,7 @@ const events = [
     tag: "// TALK", title: "BUILDING NEIGHBOURHOOD NETWORKS",
     desc: "Urban planner Amara Osei shares research on how communities strengthen local ties. Followed by open Q&A and informal drinks.",
     date: "SAT 15 AUG", time: "10:00 – 11:30", location: "Community Hall", price: "FREE",
-    ticketUrl: "#", emoji: "🎤", color: "var(--purple)",
+    ticketUrl: "#", emoji: "🎤", color: "#00ffe7",
     img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=70"
   },
   {
@@ -577,7 +575,7 @@ const events = [
     tag: "// FOOD", title: "STREET FOOD MARKET",
     desc: "20+ local vendors serving food from around the world. Live cooking demos, tastings, and kids' activities. Vegan options at every stall.",
     date: "SAT–SUN 15–16 AUG", time: "12:00 – 20:00", location: "East Lawn", price: "FREE ENTRY",
-    ticketUrl: "#", emoji: "🍕", color: "var(--yellow)",
+    ticketUrl: "#", emoji: "🍕", color: "#ff2d78",
     img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=70"
   },
   {
@@ -585,7 +583,7 @@ const events = [
     tag: "// ART", title: "OPEN STUDIOS TOUR",
     desc: "Self-guided tour through 18 local artist studios in the Arts Quarter. Pick up a map at the entrance. Artwork for sale.",
     date: "SAT 15 AUG", time: "14:00 – 18:00", location: "Arts Quarter", price: "FREE",
-    ticketUrl: "#", emoji: "🎨", color: "var(--pink)",
+    ticketUrl: "#", emoji: "🎨", color: "#b44fff",
     img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=70"
   },
   {
@@ -593,7 +591,7 @@ const events = [
     tag: "// SPORT", title: "COMMUNITY SPORTS DAY",
     desc: "Volleyball, football, relay races, and more. Form a team or join one on the day. Medals for winners, glory for all.",
     date: "SUN 16 AUG", time: "09:00 – 13:00", location: "Sports Fields", price: "FREE",
-    ticketUrl: "#", emoji: "🏐", color: "var(--green)",
+    ticketUrl: "#", emoji: "🏐", color: "#39ff6e",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=70"
   },
   {
@@ -601,7 +599,7 @@ const events = [
     tag: "// WORKSHOP", title: "INTRO TO URBAN GARDENING",
     desc: "Hands-on workshop by Groenhart Collective. Learn composting, container growing, and how to turn any balcony into a green space.",
     date: "SUN 16 AUG", time: "14:00 – 16:00", location: "Garden Pavilion", price: "€5 MATERIALS FEE",
-    ticketUrl: "#", emoji: "🌿", color: "var(--green)",
+    ticketUrl: "#", emoji: "🌿", color: "#1fc97e",
     img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=70"
   }
 ];
@@ -751,11 +749,30 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDi
 // ══════════════════════════════════════════════
 //  SUBSCRIBE
 // ══════════════════════════════════════════════
-function handleSubscribe() {
+async function handleSubscribe() {
   const val = document.getElementById('emailInput').value;
   if (!val || !val.includes('@')) { document.getElementById('emailInput').style.borderColor = 'var(--pink)'; return; }
-  document.getElementById('subscribeForm').style.display = 'none';
-  document.getElementById('subscribeConfirm').style.display = 'block';
+
+  try {
+    const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/mailing_list`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+      },
+      body: JSON.stringify({ email: val })
+    });
+
+    if (response.ok) {
+      document.getElementById('subscribeForm').style.display = 'none';
+      document.getElementById('subscribeConfirm').style.display = 'block';
+    } else {
+      console.error('Subscription failed');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
 
 // ══════════════════════════════════════════════
