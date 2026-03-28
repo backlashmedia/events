@@ -128,8 +128,8 @@
     }
     .featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
     .featured-img-side { position: relative; overflow: hidden; min-height: 320px; cursor: pointer; }
-    .featured-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
-    .featured-card:hover .featured-img { transform: scale(1.04); }
+    .featured-img { width: 100%; height: 100%; object-fit: contain; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; background: var(--black); }
+    .featured-card:hover .featured-img { transform: scale(1.02); }
     .featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
     .featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--panel) 100%); pointer-events: none; }
     .featured-info {
@@ -167,9 +167,9 @@
     }
     .event-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 50%); }
     .event-card:hover { transform: translate(-4px,-4px); box-shadow: 6px 6px 0 var(--card-color, var(--cyan)); }
-    .card-img-wrap { width: 100%; height: 170px; max-height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); }
-    .card-img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
-    .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.05); }
+    .card-img-wrap { width: 100%; height: 170px; max-height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); background: var(--black); }
+    .card-img { width: 100%; height: 100%; object-fit: contain; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
+    .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.02); }
     .card-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: var(--panel); }
     .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
     .card-tag { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--card-color, var(--cyan)); text-shadow: 0 0 8px var(--card-color, var(--cyan)); }
@@ -222,7 +222,7 @@
     .modal-bar-title { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; }
     .modal-close { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem; }
     .modal-close:hover { background: rgba(0,0,0,0.15); }
-    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
+    .modal-hero-img { width: 100%; height: 240px; object-fit: contain; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); background: var(--black); }
     .modal-hero-ph  { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
     .modal-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem; }
     .modal-tag   { font-size: 0.9rem; letter-spacing: 0.15em; }
@@ -313,14 +313,14 @@
     <div class="section-line"></div>
   </div>
   <div class="subscribe-box">
-    <h3 class="subscribe-heading">JOIN THE PLAYER LIST</h3>
-    <p class="subscribe-sub">Get updates on new events, announcements, and community news. No spam. Unsubscribe anytime.</p>
+    <h3 class="subscribe-heading">JOIN OUR MAILING LIST!</h3>
+    <p class="subscribe-sub">Get updated on our upcoming events.</p>
     <div class="subscribe-form" id="subscribeForm">
       <input class="subscribe-input" id="emailInput" type="email" placeholder="YOUR@EMAIL.COM" />
       <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">&#9658; JOIN</button>
     </div>
     <p class="subscribe-error" id="subscribeError">PLEASE ENTER A VALID EMAIL ADDRESS.</p>
-    <p class="subscribe-confirm" id="subscribeConfirm">YOU ARE IN! SEE YOU AT THE GATHERING.</p>
+    <p class="subscribe-confirm" id="subscribeConfirm">Thank you!</p>
   </div>
 </section>
 
@@ -355,7 +355,7 @@
 <script>
 var GITHUB_USER = 'backlashmedia';
 var GITHUB_REPO = 'events';
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyjzCtPjAzQyBZ8_-_KUcBfQzCnZtMHSJjCwIxfpRGYGTqWa74G26NCey47mPJpWsEr/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzw0WxeKc_5MIuLIQ4YYxQ9KG8L3BZVo-iToTEeJHO5dEJvYxn8uNY9nED0vlLfzOo/exec';
 
 var DATA_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/events.json';
 var BASE_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/';
@@ -421,12 +421,44 @@ function resolveImg(img) {
   return BASE_URL + img;
 }
 
+// Parse a date string like "TUE 31 MAR", "WED 9 APR", "SAT 12 JUL" into a Date.
+// Returns null if unparseable (those events are always shown).
+var MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+function parseEventDate(dateStr) {
+  if (!dateStr) return null;
+  // Strip leading day-name token (MON, TUE … SAT, SUN) if present
+  var parts = dateStr.trim().toUpperCase().replace(/[^A-Z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
+  var day = null, month = null;
+  for (var i = 0; i < parts.length; i++) {
+    var n = parseInt(parts[i], 10);
+    if (!isNaN(n) && day === null) { day = n; }
+    if (isNaN(n) && MONTHS[parts[i]] !== undefined && month === null) { month = MONTHS[parts[i]]; }
+  }
+  if (day === null || month === null) return null;
+  var now = new Date();
+  var year = now.getFullYear();
+  // If the month is earlier in the year than today and we're past June, assume next year
+  var d = new Date(year, month, day);
+  if (d < now && month < now.getMonth() - 1) d = new Date(year + 1, month, day);
+  return d;
+}
+
+function isExpired(ev) {
+  var d = parseEventDate(ev.date);
+  if (!d) return false; // can't parse → always show
+  var today = new Date();
+  today.setHours(0, 0, 0, 0); // compare by day, not time
+  return d < today;
+}
+
 function renderAll(data) {
   if (data.siteConfig) {
     if (data.siteConfig.tagline) document.getElementById('heroTagline').textContent = data.siteConfig.tagline;
     if (data.siteConfig.footerCopy) document.getElementById('footerCopy').textContent = data.siteConfig.footerCopy;
     if (data.siteConfig.title) document.title = data.siteConfig.title;
   }
+  // Filter out past events before rendering
+  eventsData = eventsData.filter(function(ev) { return !isExpired(ev); });
   var featuredEv = null;
   for (var i = 0; i < eventsData.length; i++) {
     if (eventsData[i].featured) { featuredEv = eventsData[i]; break; }
