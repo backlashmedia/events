@@ -1,10 +1,4 @@
-{
-  "siteConfig": {
-    "title": "BACKLASH MEDIA EVENTS",
-    "tagline": "Bent Stories · Proud Perspectives · Out Loud",
-    "footerCopy": "BENT STORIES · PROUD PERSPECTIVES · OUT LOUD"
-  },
-  "events": [
+"events": [
     {
       "featured": true,
       "tag": "// STORYTELLING",
@@ -30,7 +24,7 @@
       "price": "DONATE / SIGN UP",
       "ticketUrl": "https://www.voordekunst.nl/projecten/19972-here-lies-lola-short-film",
       "emoji": "",
-      "color": "var(--pink)",
+      "color": "var(--cyan)",
       "img": "images/Pink_Beige_and_Black_Creative_Portfolio_Animated_Presentation.jpg"
     },
     {
@@ -44,7 +38,7 @@
       "price": "TBC",
       "ticketUrl": "https://www.eventbrite.nl/e/tickets-the-big-queer-tour-requeering-history-1983259022123",
       "emoji": "",
-      "color": "var(--cyan)",
+      "color": "var(--purple)",
       "img": "images/BQT.jpg"
     },
     {
@@ -58,8 +52,8 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--purple)",
-      "img": "images/image.jpg"
+      "color": "var(--green)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -72,8 +66,8 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--purple)",
-      "img": "images/image.jpg"
+      "color": "var(--red)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -86,8 +80,8 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--yellow)",
-      "img": "images/image.jpg"
+      "color": "var(--orange)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -100,8 +94,8 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--orange)",
-      "img": "images/image.jpg"
+      "color": "var(--yellow)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -114,8 +108,8 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--purple)",
-      "img": "images/image.jpg"
+      "color": "var(--pink)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -128,7 +122,7 @@
       "price": "€9.50 – €19.00",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--purple)",
+      "color": "var(--cyan)",
       "img": "images/image.jpg"
     },
     {
@@ -142,8 +136,8 @@
       "price": "TBC",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--green)",
-      "img": "images/image.jpg"
+      "color": "var(--purple)",
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -157,7 +151,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--green)",
-      "img": "images/3.jpg"
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -170,7 +164,7 @@
       "price": "TBC",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--green)",
+      "color": "var(--red)",
       "img": "images/4.jpg"
     },
     {
@@ -184,7 +178,7 @@
       "price": "TBC",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--yellow)",
+      "color": "var(--orange)",
       "img": "images/5.jpg"
     },
     {
@@ -198,55 +192,7 @@
       "price": "TBC",
       "ticketUrl": "#",
       "emoji": "",
-      "color": "var(--green)",
+      "color": "var(--yellow)",
       "img": "images/6.jpg"
     }
-  ],
-  "gallery": [
-    {
-      "img": "images/IMG_5887.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_3270.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_8582.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0406.jpeg",
-      "caption": "▸ BRAVE SPACE",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0660.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0675.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0678.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0684.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    },
-    {
-      "img": "images/IMG_0687.jpeg",
-      "caption": "▸ THE BIG QUEER TOUR",
-      "emoji": ""
-    }
   ]
-}
