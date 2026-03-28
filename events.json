@@ -8,16 +8,16 @@
     {
       "featured": true,
       "tag": "// MUSIC",
-      "title": "SUMMER SOUNDS CONCERT",
-      "desc": "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
-      "date": "FRI 14 AUG",
+      "title": "BRAVE SPACE TRANS",
+      "desc": "Lorem ipsum park for the opening night concert. All ages welcome.",
+      "date": "TUE 31 AUG",
       "time": "19:00 – 23:00",
       "location": "Main Stage · Westpark",
       "price": "FREE ENTRY",
-      "ticketUrl": "#",
+      "ticketUrl": "www.google.com",
       "emoji": "🎶",
       "color": "var(--yellow)",
-      "img": "images/summer-sounds.jpg"
+      "img": "images/image.jpg"
     },
     {
       "featured": false,
