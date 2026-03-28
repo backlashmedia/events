@@ -8,16 +8,16 @@
     {
       "featured": true,
       "tag": "// MUSIC",
-      "title": "BRAVE SPACE TRANS",
-      "desc": "Lorem ipsum park for the opening night concert. All ages welcome.",
-      "date": "TUE 31 AUG",
+      "title": "SUMMER SOUNDS CONCERT",
+      "desc": "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
+      "date": "FRI 14 AUG",
       "time": "19:00 – 23:00",
       "location": "Main Stage · Westpark",
       "price": "FREE ENTRY",
-      "ticketUrl": "www.google.com",
+      "ticketUrl": "#",
       "emoji": "🎶",
       "color": "var(--yellow)",
-      "img": "images/image.jpg"
+      "img": "images/summer-sounds.jpg"
     },
     {
       "featured": false,
@@ -91,11 +91,11 @@
     }
   ],
   "gallery": [
-    { "img": "images/gallery-1.jpg", "caption": "▸ SUMMER SOUNDS 2024", "emoji": "🎶" },
-    { "img": "images/gallery-2.jpg", "caption": "▸ OPEN STUDIOS TOUR 2024", "emoji": "🎨" },
-    { "img": "images/gallery-3.jpg", "caption": "▸ STREET FOOD MARKET 2024", "emoji": "🍕" },
-    { "img": "images/gallery-4.jpg", "caption": "▸ COMMUNITY SPORTS DAY 2024", "emoji": "🏐" },
-    { "img": "images/gallery-5.jpg", "caption": "▸ URBAN GARDENING WORKSHOP 2024", "emoji": "🌿" },
-    { "img": "images/gallery-6.jpg", "caption": "▸ CLOSING CEREMONY 2024", "emoji": "🎉" }
+    { "img": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80", "caption": "▸ SUMMER SOUNDS 2024", "emoji": "🎶" },
+    { "img": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&q=80", "caption": "▸ OPEN STUDIOS TOUR 2024", "emoji": "🎨" },
+    { "img": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=80", "caption": "▸ STREET FOOD MARKET 2024", "emoji": "🍕" },
+    { "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80", "caption": "▸ COMMUNITY SPORTS DAY 2024", "emoji": "🏐" },
+    { "img": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80", "caption": "▸ URBAN GARDENING WORKSHOP 2024", "emoji": "🌿" },
+    { "img": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&q=80", "caption": "▸ CLOSING CEREMONY 2024", "emoji": "🎉" }
   ]
 }
