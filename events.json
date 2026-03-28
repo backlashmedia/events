@@ -1,4 +1,10 @@
-"events": [
+{
+  "siteConfig": {
+    "title": "BACKLASH MEDIA EVENTS",
+    "tagline": "Bent Stories · Proud Perspectives · Out Loud",
+    "footerCopy": "BENT STORIES · PROUD PERSPECTIVES · OUT LOUD"
+  },
+  "events": [
     {
       "featured": true,
       "tag": "// STORYTELLING",
@@ -195,4 +201,52 @@
       "color": "var(--yellow)",
       "img": "images/6.jpg"
     }
+  ],
+  "gallery": [
+    {
+      "img": "images/IMG_5887.jpeg",
+      "caption": "▸ BRAVE SPACE",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_3270.jpeg",
+      "caption": "▸ BRAVE SPACE",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_8582.jpeg",
+      "caption": "▸ BRAVE SPACE",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0406.jpeg",
+      "caption": "▸ BRAVE SPACE",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0660.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0675.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0678.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0684.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    },
+    {
+      "img": "images/IMG_0687.jpeg",
+      "caption": "▸ THE BIG QUEER TOUR",
+      "emoji": ""
+    }
   ]
+}
