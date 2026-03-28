@@ -1,20 +1,16 @@
-
-
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE GATHERING 2025</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>BACKLASH MEDIA EVENTS</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   <style>
     :root {
       --black:  #05020f;
       --dark:   #0d0820;
       --panel:  #120d2a;
-      --border: rgba(255,255,255,0.07);
       --cyan:   #00ffe7;
       --pink:   #ff2d78;
       --yellow: #ffe600;
@@ -31,108 +27,124 @@
       overflow-x: hidden;
       cursor: crosshair;
     }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px);
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 9997; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
+    }
 
 ```
-/* SCANLINES */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 9998; pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom, transparent 0px, transparent 3px,
-    rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px
-  );
-}
-/* CRT vignette */
-body::after {
-  content: '';
-  position: fixed; inset: 0; z-index: 9997; pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
-}
-
-/* STARS */
 .starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.star {
-  position: absolute; background: white; border-radius: 50%;
-  animation: twinkle var(--d,3s) ease-in-out infinite alternate;
-}
-@keyframes twinkle {
-  from { opacity: 0.1; } to { opacity: 0.85; }
-}
+.star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; }
+@keyframes twinkle { from{opacity:.08} to{opacity:.8} }
 
-/* NAV */
+/* ══════════════════════════════
+   RAINBOW FLAG BAR
+   Full-width row of | characters,
+   cycling through rainbow colours
+══════════════════════════════ */
+.rainbow-bar {
+  position: relative; z-index: 210;
+  width: 100%; overflow: hidden;
+  background: var(--black);
+  padding: 3px 0;
+  line-height: 1;
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+}
+/* individual pipe spans coloured by JS */
+.rainbow-bar span { display: inline; }
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  position: relative; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 2.5rem;
-  background: rgba(5,2,15,0.95);
+  padding: 0.8rem 2.5rem;
+  background: rgba(5,2,15,0.97);
   border-bottom: 2px solid var(--cyan);
 }
 .nav-logo {
-  font-family: 'Press Start 2P', monospace; font-size: 0.7rem;
-  color: var(--cyan); text-shadow: 0 0 12px var(--cyan), 0 0 30px var(--cyan);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.48rem;
+  line-height: 1.9;
+  color: var(--cyan);
+  text-shadow: 0 0 10px var(--cyan);
   text-decoration: none;
+  letter-spacing: 0.06em;
 }
-.nav-score { font-size: 1rem; color: var(--yellow); text-shadow: 0 0 8px var(--yellow); }
-.nav-lives  { font-size: 1rem; color: var(--pink);   text-shadow: 0 0 8px var(--pink); }
+.nav-right {
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.9rem; color: var(--white); text-decoration: none;
+  opacity: 0.5; letter-spacing: 0.1em; transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; text-shadow: 0 0 8px var(--cyan); }
 
-/* HERO */
+/* ══════════════════════════════
+   HERO — no sunset, stars only
+══════════════════════════════ */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 7rem 2rem 4rem; overflow: hidden; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 5rem 2rem 4rem; overflow: hidden; z-index: 1;
 }
-.hero-grid-canvas {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 50%; z-index: 0;
+
+/* Subtle deep space gradient instead of sunset */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(180,79,255,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,255,231,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,45,120,0.07) 0%, transparent 60%),
+    var(--black);
 }
-.hero-horizon {
-  position: absolute; left: 0; right: 0; bottom: 50%; height: 3px; z-index: 1;
-  background: linear-gradient(to right, transparent, var(--pink), var(--cyan), var(--pink), transparent);
-  box-shadow: 0 0 30px 8px var(--pink), 0 0 80px 20px rgba(255,45,120,0.3);
-}
-.hero-sun {
-  position: absolute; width: 200px; height: 200px; border-radius: 50%;
-  background: linear-gradient(to bottom, var(--yellow) 0%, var(--pink) 100%);
-  bottom: 42%; left: 50%; transform: translateX(-50%); z-index: 0;
-  box-shadow: 0 0 60px 20px rgba(255,45,120,0.5), 0 0 120px 40px rgba(255,230,0,0.2);
-  overflow: hidden;
-}
-.sun-stripes { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding-bottom: 10px; }
-.sun-stripe  { background: rgba(5,2,15,0.9); flex-shrink: 0; }
 
 .hero-content {
-  position: relative; z-index: 2; text-align: center; margin-bottom: 2.5rem;
-  animation: fadeUp 0.9s ease forwards 0.3s; opacity: 0;
+  position: relative; z-index: 2; text-align: center;
+  animation: fadeUp 0.9s ease forwards 0.2s; opacity: 0;
+  margin-bottom: 3rem;
 }
-.hero-eyebrow {
-  font-size: 0.85rem; letter-spacing: 0.2em; color: var(--cyan);
-  text-shadow: 0 0 10px var(--cyan); margin-bottom: 1.4rem;
-  animation: blink 1.4s step-end infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-.hero-title {
+.hero-brand {
   font-family: 'Press Start 2P', monospace;
-  font-size: clamp(1.8rem, 6vw, 4rem); line-height: 1.3;
-  color: var(--white);
-  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.3), 0 0 40px var(--purple);
-  margin-bottom: 0.8rem;
+  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple);
+  margin-bottom: 1.4rem;
   animation: glitch 7s infinite;
 }
+.brand-main   { display: block; font-size: clamp(0.9rem, 2.5vw, 1.5rem); color: var(--white); margin-bottom: 0.3rem; }
+.brand-events { display: block; font-size: clamp(2.2rem, 7vw, 5rem); color: var(--white); line-height: 1.1; }
+
 @keyframes glitch {
-  0%,93%,100% { text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.3), 0 0 40px var(--purple); transform: none; }
+  0%,93%,100% { text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(255,45,120,0.25), 0 0 40px var(--purple); transform: none; }
   94% { text-shadow: -4px 4px 0 var(--cyan), 4px -4px 0 var(--pink); transform: skewX(-2deg); }
   95% { text-shadow: 4px -4px 0 var(--yellow), -4px 4px 0 var(--pink); transform: skewX(2deg); }
   96% { text-shadow: 4px 4px 0 var(--pink); transform: none; }
 }
-.hero-sub {
-  font-size: 1.5rem; color: var(--yellow); text-shadow: 0 0 10px var(--yellow);
-  letter-spacing: 0.12em; margin-bottom: 2rem;
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(0,255,231,0.5);
+  letter-spacing: 0.12em;
+  margin-bottom: 2.5rem;
 }
+
 .hero-meta {
   display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
 }
 .hero-meta-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
-.meta-label { font-size: 0.8rem; color: var(--purple); text-shadow: 0 0 6px var(--purple); letter-spacing: 0.15em; }
+.meta-label { font-size: 0.78rem; color: var(--purple); text-shadow: 0 0 6px var(--purple); letter-spacing: 0.15em; }
 .meta-value { font-size: 1.3rem; color: var(--white); }
 
 .hero-cta {
@@ -149,36 +161,73 @@ nav {
 }
 .hero-cta:hover { background: var(--cyan); color: var(--black); text-shadow: none; }
 
-.hero-photo {
-  position: relative; z-index: 2; width: min(680px, 90vw); margin: 0 auto;
-  border: 3px solid var(--pink);
-  box-shadow: 0 0 0 3px var(--black), 0 0 0 6px var(--pink), 8px 8px 0 var(--purple), 0 0 50px rgba(255,45,120,0.4);
-  animation: fadeUp 0.9s ease forwards 0.6s; opacity: 0;
+/* ── FEATURED EVENT CARD ── */
+.featured-wrap {
+  position: relative; z-index: 2;
+  width: min(820px, 92vw); margin: 0 auto;
+  animation: fadeUp 0.9s ease forwards 0.5s; opacity: 0;
 }
-.hero-photo img { width: 100%; display: block; filter: saturate(1.3) contrast(1.1) hue-rotate(8deg); }
-.hero-photo-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 0.5rem 1rem; background: rgba(5,2,15,0.85); border-top: 2px solid var(--pink);
-  font-size: 0.95rem; color: var(--pink); text-shadow: 0 0 8px var(--pink); letter-spacing: 0.1em;
+.featured-label {
+  font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
+  color: var(--yellow); text-shadow: 0 0 10px var(--yellow);
+  letter-spacing: 0.1em; margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 0.8rem;
 }
+.featured-label::before { content: '★'; animation: blink 1s step-end infinite; }
+.featured-label::after  { content: '★'; animation: blink 1s step-end infinite 0.5s; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* SECTIONS */
-section { position: relative; z-index: 1; padding: 4rem 2.5rem 5rem; }
-.section-header {
-  display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem;
+.featured-card {
+  border: 3px solid var(--yellow);
+  box-shadow: 6px 6px 0 var(--yellow), 0 0 50px rgba(255,230,0,0.12);
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  overflow: hidden; cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+.featured-card:hover { transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--yellow), 0 0 70px rgba(255,230,0,0.18); }
+
+.featured-img-side { position: relative; overflow: hidden; min-height: 320px; }
+.featured-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); transition: transform 0.4s; }
+.featured-card:hover .featured-img { transform: scale(1.04); }
+.featured-img-ph { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: var(--panel); }
+.featured-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--panel) 100%); pointer-events: none; }
+
+.featured-info {
+  background: var(--panel); padding: 2rem;
+  border-left: 3px solid var(--yellow);
+  display: flex; flex-direction: column; gap: 1rem; justify-content: center;
+}
+.featured-tag { font-size: 0.85rem; letter-spacing: 0.15em; color: var(--yellow); text-shadow: 0 0 8px var(--yellow); }
+.featured-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.58rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
+.featured-desc { font-size: 1.1rem; line-height: 1.5; color: rgba(240,234,255,0.65); }
+.featured-meta { display: flex; flex-direction: column; gap: 0.4rem; }
+.featured-meta-row { font-size: 1rem; color: rgba(240,234,255,0.55); display: flex; align-items: center; gap: 0.4rem; }
+.featured-btn {
+  font-family: 'Press Start 2P', monospace; font-size: 0.52rem;
+  padding: 0.85rem 1.2rem; background: var(--yellow); color: var(--black);
+  border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  margin-top: 0.3rem; transition: filter 0.15s; position: relative; overflow: hidden;
+}
+.featured-btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.06) 4px, rgba(0,0,0,0.06) 8px);
+}
+.featured-btn:hover { filter: brightness(1.15); }
+
+/* ══════════════════════════════
+   EVENTS SECTION
+══════════════════════════════ */
+#events { position: relative; z-index: 1; padding: 4rem 2.5rem 4rem; }
+.section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
 .section-title {
-  font-family: 'Press Start 2P', monospace; font-size: clamp(0.65rem, 1.8vw, 1rem);
-  color: var(--yellow); text-shadow: 3px 3px 0 rgba(255,230,0,0.25), 0 0 20px var(--yellow);
-  white-space: nowrap;
+  font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.6vw, 0.95rem);
+  color: var(--yellow); text-shadow: 3px 3px 0 rgba(255,230,0,0.25), 0 0 20px var(--yellow); white-space: nowrap;
 }
 .section-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--yellow), transparent); }
 .section-count { font-size: 1rem; color: var(--yellow); opacity: 0.4; }
 
-/* EVENTS GRID */
-.events-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.2rem;
-}
+.events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.2rem; }
+
 .event-card {
   background: var(--panel); border: 2px solid var(--card-color, var(--cyan));
   cursor: pointer; overflow: hidden; display: flex; flex-direction: column;
@@ -194,15 +243,12 @@ section { position: relative; z-index: 1; padding: 4rem 2.5rem 5rem; }
 .card-img-wrap { width: 100%; height: 170px; overflow: hidden; border-bottom: 2px solid var(--card-color, var(--cyan)); }
 .card-img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7); transition: filter 0.3s, transform 0.3s; display: block; }
 .event-card:hover .card-img { filter: saturate(1.4) hue-rotate(15deg); transform: scale(1.05); }
-.card-img-ph {
-  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-  font-size: 3.5rem; background: var(--panel);
-}
+.card-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: var(--panel); }
 
 .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
 .card-tag { font-size: 0.85rem; letter-spacing: 0.12em; color: var(--card-color, var(--cyan)); text-shadow: 0 0 8px var(--card-color, var(--cyan)); }
 .card-title { font-family: 'Press Start 2P', monospace; font-size: 0.58rem; line-height: 1.8; color: var(--white); }
-.card-detail { font-size: 0.95rem; color: rgba(240,234,255,0.55); letter-spacing: 0.04em; }
+.card-detail { font-size: 0.95rem; color: rgba(240,234,255,0.55); }
 .card-footer {
   margin-top: auto; padding-top: 0.8rem;
   border-top: 1px dashed rgba(255,255,255,0.1);
@@ -211,71 +257,85 @@ section { position: relative; z-index: 1; padding: 4rem 2.5rem 5rem; }
 .card-cta { font-size: 0.85rem; color: var(--card-color, var(--cyan)); text-shadow: 0 0 6px var(--card-color, var(--cyan)); }
 .card-press { font-size: 0.75rem; color: rgba(255,255,255,0.2); animation: blink 1.2s step-end infinite; }
 
-/* GALLERY */
-.gallery-grid {
-  display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 140px; gap: 4px;
-}
-.gal-item { overflow: hidden; position: relative; border: 2px solid var(--gal-color, var(--cyan)); }
-.gal-item:nth-child(1) { grid-column: span 5; grid-row: span 2; --gal-color: var(--pink); }
-.gal-item:nth-child(2) { grid-column: span 4; --gal-color: var(--cyan); }
-.gal-item:nth-child(3) { grid-column: span 3; --gal-color: var(--purple); }
-.gal-item:nth-child(4) { grid-column: span 4; --gal-color: var(--yellow); }
-.gal-item:nth-child(5) { grid-column: span 3; --gal-color: var(--green); }
-.gal-item:nth-child(6) { grid-column: span 4; grid-row: span 2; --gal-color: var(--cyan); }
-.gal-item:nth-child(7) { grid-column: span 3; --gal-color: var(--pink); }
-.gal-item:nth-child(8) { grid-column: span 5; --gal-color: var(--yellow); }
+/* ══════════════════════════════
+   GALLERY CAROUSEL
+══════════════════════════════ */
+#gallery { position: relative; z-index: 1; padding: 0 2.5rem 4rem; }
+#gallery .section-title { color: var(--purple); text-shadow: 3px 3px 0 rgba(180,79,255,0.25), 0 0 20px var(--purple); }
+#gallery .section-line  { background: linear-gradient(to right, var(--purple), transparent); }
 
-.gal-ph {
-  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem; background: var(--panel); transition: transform 0.3s, filter 0.3s;
+.carousel-wrap { position: relative; }
+.carousel-track-outer { overflow: hidden; border: 2px solid var(--purple); box-shadow: 4px 4px 0 var(--purple); }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.carousel-slide { flex: 0 0 100%; position: relative; height: 400px; overflow: hidden; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(15deg); }
+.carousel-slide-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem; background: var(--panel); }
+.carousel-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.6rem 1.2rem; background: rgba(5,2,15,0.85); border-top: 2px solid var(--purple);
+  font-size: 1rem; color: var(--purple); text-shadow: 0 0 8px var(--purple); letter-spacing: 0.1em;
 }
-.gal-item:hover .gal-ph { transform: scale(1.08); }
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  background: rgba(5,2,15,0.85); border: 2px solid var(--purple); color: var(--purple);
+  font-family: 'Press Start 2P', monospace; font-size: 0.7rem;
+  padding: 0.8rem 1rem; cursor: pointer; text-shadow: 0 0 8px var(--purple);
+  transition: background 0.15s; line-height: 1;
+}
+.carousel-btn:hover { background: var(--purple); color: var(--black); text-shadow: none; }
+.carousel-btn.prev { left: -20px; }
+.carousel-btn.next { right: -20px; }
+.carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.2rem; }
+.carousel-dot { width: 10px; height: 10px; background: rgba(180,79,255,0.3); border: 1px solid var(--purple); cursor: pointer; transition: background 0.2s; }
+.carousel-dot.active { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
 
-/* LOCATION */
-#location { padding-bottom: 5rem; }
-#location .section-title { color: var(--purple); text-shadow: 3px 3px 0 rgba(180,79,255,0.25), 0 0 20px var(--purple); }
-#location .section-line  { background: linear-gradient(to right, var(--purple), transparent); }
+/* ══════════════════════════════
+   SUBSCRIBE
+══════════════════════════════ */
+#subscribe { position: relative; z-index: 1; padding: 0 2.5rem 5rem; }
+#subscribe .section-title { color: var(--green); text-shadow: 3px 3px 0 rgba(57,255,110,0.25), 0 0 20px var(--green); }
+#subscribe .section-line  { background: linear-gradient(to right, var(--green), transparent); }
 
-.location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-.location-panel {
-  border: 2px solid var(--purple); padding: 1.8rem;
-  display: flex; flex-direction: column; gap: 1.4rem;
-  box-shadow: 4px 4px 0 var(--purple);
+.subscribe-box {
+  border: 3px solid var(--green); box-shadow: 6px 6px 0 var(--green), 0 0 40px rgba(57,255,110,0.08);
+  background: var(--panel); padding: 3rem;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  text-align: center; max-width: 640px; margin: 0 auto;
 }
-.loc-block { display: flex; flex-direction: column; gap: 0.35rem; }
-.loc-label { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--purple); text-shadow: 0 0 6px var(--purple); }
-.loc-value { font-size: 1.15rem; color: var(--white); line-height: 1.5; }
-.map-panel {
-  border: 2px solid var(--green); box-shadow: 4px 4px 0 var(--green);
-  aspect-ratio: 4/3; background: var(--panel); display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 1rem; position: relative; overflow: hidden;
+.subscribe-heading { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.5vw, 0.85rem); line-height: 1.8; color: var(--white); }
+.subscribe-sub { font-size: 1.2rem; color: rgba(240,234,255,0.6); line-height: 1.5; }
+.subscribe-form { display: flex; gap: 0; width: 100%; max-width: 480px; }
+.subscribe-input {
+  flex: 1; padding: 0.9rem 1.2rem;
+  background: rgba(255,255,255,0.04); border: 2px solid var(--green); border-right: none;
+  color: var(--white); font-family: 'VT323', monospace; font-size: 1.2rem; letter-spacing: 0.05em; outline: none;
 }
-.map-grid-lines {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(57,255,110,0.07) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(57,255,110,0.07) 1px, transparent 1px);
-  background-size: 28px 28px;
+.subscribe-input::placeholder { color: rgba(57,255,110,0.35); }
+.subscribe-input:focus { background: rgba(57,255,110,0.06); }
+.subscribe-btn {
+  font-family: 'Press Start 2P', monospace; font-size: 0.55rem;
+  padding: 0.9rem 1.2rem; background: var(--green); color: var(--black);
+  border: 2px solid var(--green); cursor: pointer; transition: filter 0.15s; white-space: nowrap;
 }
-.map-inner { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
-.pixel-pin {
-  width: 22px; height: 22px; background: var(--pink); box-shadow: 0 0 20px var(--pink);
-  clip-path: polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);
-  animation: pinPulse 1.5s ease-in-out infinite;
-}
-@keyframes pinPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
-.map-label { font-size: 1.1rem; color: var(--green); text-shadow: 0 0 8px var(--green); letter-spacing: 0.1em; }
+.subscribe-btn:hover { filter: brightness(1.15); }
+.subscribe-confirm { font-size: 1.1rem; color: var(--green); text-shadow: 0 0 8px var(--green); display: none; letter-spacing: 0.1em; }
+.subscribe-note { font-size: 0.85rem; color: rgba(240,234,255,0.22); letter-spacing: 0.08em; }
 
-/* FOOTER */
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
 footer {
   position: relative; z-index: 1; border-top: 3px solid var(--cyan); padding: 1.8rem 2.5rem;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
   background: var(--dark);
 }
-.footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
-.footer-copy { font-size: 0.85rem; color: rgba(240,234,255,0.3); }
-.footer-lives { font-size: 1rem; color: var(--pink); text-shadow: 0 0 8px var(--pink); }
+.footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); line-height: 1.8; }
+.footer-copy { font-size: 0.85rem; color: rgba(240,234,255,0.28); }
+.footer-rainbow { font-size: 1rem; letter-spacing: 0.05em; }
 
-/* MODAL */
+/* ══════════════════════════════
+   MODAL
+══════════════════════════════ */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 500; background: rgba(5,2,15,0.93);
   display: flex; align-items: center; justify-content: center; padding: 2rem;
@@ -283,68 +343,62 @@ footer {
   backdrop-filter: blur(6px);
 }
 .modal-overlay.open { opacity: 1; visibility: visible; }
-
 .modal {
-  position: relative; background: var(--panel);
-  border: 3px solid var(--mc, var(--cyan));
-  box-shadow: 8px 8px 0 var(--mc, var(--cyan)), 0 0 80px rgba(0,255,231,0.15);
+  background: var(--panel); border: 3px solid var(--mc, var(--cyan));
+  box-shadow: 8px 8px 0 var(--mc, var(--cyan));
   max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto;
   transform: scale(0.92) translateY(20px);
   transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
 }
 .modal-overlay.open .modal { transform: scale(1) translateY(0); }
-
 .modal-bar {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.6rem 1.2rem; background: var(--mc, var(--cyan)); color: var(--black);
+  position: sticky; top: 0; z-index: 10;
 }
 .modal-bar-title { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; }
-.modal-close {
-  font-family: 'Press Start 2P', monospace; font-size: 0.6rem;
-  background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem;
-}
+.modal-close { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; background: none; border: none; color: var(--black); cursor: pointer; padding: 0.2rem 0.5rem; }
 .modal-close:hover { background: rgba(0,0,0,0.15); }
-
-.modal-hero-img  { width: 100%; height: 240px; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
-.modal-hero-ph   { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; border-bottom: 3px solid var(--mc, var(--cyan)); }
-
+.modal-hero-img { width: 100%; height: 240px; object-fit: cover; display: block; filter: saturate(1.2) hue-rotate(8deg); border-bottom: 3px solid var(--mc, var(--cyan)); }
+.modal-hero-ph  { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; border-bottom: 3px solid var(--mc, var(--cyan)); }
 .modal-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.3rem; }
-.modal-tag { font-size: 0.9rem; letter-spacing: 0.15em; color: var(--mc, var(--cyan)); text-shadow: 0 0 8px var(--mc, var(--cyan)); }
+.modal-tag   { font-size: 0.9rem; letter-spacing: 0.15em; }
 .modal-title { font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 1.8vw, 0.9rem); line-height: 1.8; color: var(--white); }
-.modal-desc { font-size: 1.2rem; line-height: 1.6; color: rgba(240,234,255,0.8); }
-
+.modal-desc  { font-size: 1.2rem; line-height: 1.6; color: rgba(240,234,255,0.8); }
 .modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 .modal-info-block { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px dashed rgba(255,255,255,0.1); }
-.modal-info-label { font-size: 0.72rem; letter-spacing: 0.18em; color: var(--mc, var(--cyan)); text-shadow: 0 0 6px var(--mc, var(--cyan)); }
+.modal-info-label { font-size: 0.72rem; letter-spacing: 0.18em; }
 .modal-info-value { font-size: 1.1rem; color: var(--white); }
-
 .modal-ticket-btn {
   display: block; font-family: 'Press Start 2P', monospace; font-size: 0.6rem;
-  text-align: center; padding: 1.1rem 2rem; background: var(--mc, var(--cyan)); color: var(--black);
+  text-align: center; padding: 1.1rem 2rem; color: var(--black);
   text-decoration: none; cursor: pointer; transition: filter 0.15s, transform 0.1s;
   position: relative; overflow: hidden; border: none; width: 100%;
 }
 .modal-ticket-btn::after {
   content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.06) 4px, rgba(255,255,255,0.06) 8px);
+  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.07) 4px, rgba(255,255,255,0.07) 8px);
 }
 .modal-ticket-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-
 .modal-pixels { display: flex; gap: 6px; align-items: center; justify-content: center; }
-.mpx { width: 8px; height: 8px; background: var(--mc, var(--cyan)); opacity: 0.4; }
+.mpx { width: 8px; height: 8px; opacity: 0.4; }
 .mpx.wide { width: 16px; }
 
-@keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
-/* RESPONSIVE */
-@media(max-width:700px){
-  nav { padding: 0.9rem 1.2rem; }
-  .hero { padding: 5rem 1.2rem 3rem; }
-  section { padding: 3rem 1.2rem 4rem; }
-  .location-grid { grid-template-columns: 1fr; }
+@media(max-width:780px){
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-img-side { min-height: 200px; }
+  .featured-img-ph   { min-height: 200px; }
+  .featured-info { border-left: none; border-top: 3px solid var(--yellow); }
+  .carousel-btn.prev { left: 4px; }
+  .carousel-btn.next { right: 4px; }
+  .carousel-slide { height: 240px; }
+  #events, #gallery, #subscribe, .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
   .modal-info-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 110px; }
-  .gal-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .subscribe-form { flex-direction: column; }
+  .subscribe-input { border-right: 2px solid var(--green); border-bottom: none; }
+  nav { padding: 0.8rem 1.2rem; }
 }
 ```
 
@@ -354,34 +408,28 @@ footer {
 
 <div class="starfield" id="starfield"></div>
 
-<!-- NAV -->
+<!-- ══ RAINBOW FLAG BAR ══ -->
+
+<div class="rainbow-bar" id="rainbowBar"></div>
+
+<!-- ══ NAV ══ -->
 
 <nav>
-  <a href="#" class="nav-logo">THE GATHERING</a>
-  <span class="nav-score">HI-SCORE: 00040</span>
-  <span class="nav-lives">♥ ♥ ♥</span>
+  <a href="#" class="nav-logo">BACKLASH MEDIA<br>EVENTS</a>
+  <!-- No nav links as requested -->
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 
 <section class="hero">
-  <canvas class="hero-grid-canvas" id="gridCanvas"></canvas>
-  <div class="hero-horizon"></div>
-  <div class="hero-sun">
-    <div class="sun-stripes">
-      <div class="sun-stripe" style="height:10px"></div>
-      <div class="sun-stripe" style="height:8px"></div>
-      <div class="sun-stripe" style="height:7px"></div>
-      <div class="sun-stripe" style="height:6px"></div>
-      <div class="sun-stripe" style="height:6px"></div>
-      <div class="sun-stripe" style="height:5px"></div>
-    </div>
-  </div>
+  <div class="hero-bg"></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">▶ INSERT COIN TO BEGIN ◀</p>
-    <h1 class="hero-title">THE<br>GATHERING</h1>
-    <p class="hero-sub">COMMUNITY EDITION · 2025</p>
+    <div class="hero-brand">
+      <span class="brand-main">BACKLASH MEDIA</span>
+      <span class="brand-events">EVENTS</span>
+    </div>
+    <p class="hero-tagline">Bent Stories · Proud Perspectives · Out Loud</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="meta-label">▸ WHEN</span>
@@ -396,91 +444,73 @@ footer {
         <span class="meta-value">5TH ANNUAL</span>
       </div>
     </div>
-    <a href="#events" class="hero-cta">▶ PRESS START ◀</a>
+    <a href="#events" class="hero-cta">▶ SEE ALL EVENTS</a>
   </div>
 
-  <div class="hero-photo">
-    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80" alt="The Gathering 2024">
-    <div class="hero-photo-caption">▸ THE GATHERING 2024 — WESTPARK AMSTERDAM</div>
+  <!-- FEATURED CARD inside hero -->
+
+  <div class="featured-wrap">
+    <div class="featured-label">FEATURED EVENT</div>
+    <div class="featured-card" id="featuredCard"></div>
   </div>
 </section>
 
-<!-- EVENTS -->
+<!-- ══ ALL EVENTS ══ -->
 
 <section id="events">
   <div class="section-header">
-    <h2 class="section-title">SELECT EVENT</h2>
+    <h2 class="section-title">ALL EVENTS</h2>
     <div class="section-line"></div>
-    <span class="section-count">06 ITEMS</span>
+    <span class="section-count" id="eventCount"></span>
   </div>
   <div class="events-grid" id="eventsGrid"></div>
 </section>
 
-<!-- GALLERY -->
+<!-- ══ GALLERY ══ -->
 
 <section id="gallery">
   <div class="section-header">
-    <h2 class="section-title" style="color:var(--purple);text-shadow:3px 3px 0 rgba(180,79,255,0.25),0 0 20px var(--purple)">GALLERY</h2>
-    <div class="section-line" style="background:linear-gradient(to right,var(--purple),transparent)"></div>
-  </div>
-  <div class="gallery-grid">
-    <div class="gal-item"><div class="gal-ph">🎶</div></div>
-    <div class="gal-item"><div class="gal-ph">🎨</div></div>
-    <div class="gal-item"><div class="gal-ph">🍕</div></div>
-    <div class="gal-item"><div class="gal-ph">🏐</div></div>
-    <div class="gal-item"><div class="gal-ph">🌿</div></div>
-    <div class="gal-item"><div class="gal-ph">🎤</div></div>
-    <div class="gal-item"><div class="gal-ph">🎭</div></div>
-    <div class="gal-item"><div class="gal-ph">🎉</div></div>
-  </div>
-</section>
-
-<!-- LOCATION -->
-
-<section id="location">
-  <div class="section-header">
-    <h2 class="section-title">LOCATION DATA</h2>
+    <h2 class="section-title">GALLERY</h2>
     <div class="section-line"></div>
   </div>
-  <div class="location-grid">
-    <div class="location-panel">
-      <div class="loc-block">
-        <span class="loc-label">▸ VENUE</span>
-        <span class="loc-value">Westpark Community Grounds<br>Haarlemmerweg 8–10<br>1014 BE Amsterdam</span>
-      </div>
-      <div class="loc-block">
-        <span class="loc-label">▸ DATES & TIMES</span>
-        <span class="loc-value">FRI 14 AUG · 17:00 – 01:00<br>SAT 15 AUG · 09:00 – 23:00<br>SUN 16 AUG · 09:00 – 19:00</span>
-      </div>
-      <div class="loc-block">
-        <span class="loc-label">▸ PUBLIC TRANSPORT</span>
-        <span class="loc-value">Tram 19 → Mercatorplein<br>Bus 21 → Haarlemmerplein</span>
-      </div>
-      <div class="loc-block">
-        <span class="loc-label">▸ PARKING</span>
-        <span class="loc-value">Bike valet Sat & Sun. Cycling strongly encouraged.</span>
-      </div>
+  <div class="carousel-wrap">
+    <button class="carousel-btn prev" id="carouselPrev">◀</button>
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="carouselTrack"></div>
     </div>
-    <div class="map-panel">
-      <div class="map-grid-lines"></div>
-      <div class="map-inner">
-        <div class="pixel-pin"></div>
-        <div class="map-label">WESTPARK<br>AMSTERDAM</div>
-        <div style="font-size:0.9rem;color:rgba(57,255,110,0.45);text-align:center">▸ SWAP FOR REAL MAP EMBED ◀</div>
-      </div>
+    <button class="carousel-btn next" id="carouselNext">▶</button>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+<!-- ══ SUBSCRIBE ══ -->
+
+<section id="subscribe">
+  <div class="section-header">
+    <h2 class="section-title">STAY IN THE LOOP</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="subscribe-box">
+    <h3 class="subscribe-heading">JOIN THE PLAYER LIST</h3>
+    <p class="subscribe-sub">Get updates on new events, announcements, and community news. No spam. Unsubscribe anytime.</p>
+    <div class="subscribe-form" id="subscribeForm">
+      <input class="subscribe-input" id="emailInput" type="email" placeholder="YOUR@EMAIL.COM" />
+      <button class="subscribe-btn" onclick="handleSubscribe()">▶ JOIN</button>
     </div>
+    <p class="subscribe-confirm" id="subscribeConfirm">✓ YOU'RE IN! SEE YOU AT THE GATHERING.</p>
+    <p class="subscribe-note">▸ Replace with your Mailchimp / ConvertKit embed</p>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 
 <footer>
-  <span class="footer-logo">THE GATHERING © 2025</span>
-  <span class="footer-copy">GAME OVER? NEVER. SEE YOU NEXT YEAR.</span>
-  <span class="footer-lives">♥ ♥ ♥</span>
+  <span class="footer-logo">BACKLASH MEDIA<br>EVENTS © 2025</span>
+  <span class="footer-copy">BENT STORIES · PROUD PERSPECTIVES · OUT LOUD</span>
+  <span class="footer-rainbow" id="footerRainbow"></span>
 </footer>
 
-<!-- MODAL -->
+<!-- ══ MODAL ══ -->
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
@@ -491,11 +521,11 @@ footer {
     <div id="modalImgWrap"></div>
     <div class="modal-body">
       <span class="modal-tag"  id="modalTag"></span>
-      <h2 class="modal-title"  id="modalTitle"></h2>
-      <p  class="modal-desc"   id="modalDesc"></p>
+      <h2  class="modal-title" id="modalTitle"></h2>
+      <p   class="modal-desc"  id="modalDesc"></p>
       <div class="modal-info-grid" id="modalInfoGrid"></div>
       <a href="#" class="modal-ticket-btn" id="modalBtn" target="_blank">▶ GET TICKETS / REGISTER</a>
-      <div class="modal-pixels">
+      <div class="modal-pixels" id="modalPixels">
         <div class="mpx"></div><div class="mpx"></div><div class="mpx"></div>
         <div class="mpx wide"></div>
         <div class="mpx"></div><div class="mpx"></div><div class="mpx"></div>
@@ -505,61 +535,141 @@ footer {
 </div>
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────
+// ══════════════════════════════════════════════
+//  RAINBOW BAR — pipe characters left to right
+// ══════════════════════════════════════════════
+const rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
+
+function buildRainbowBar() {
+  const bar = document.getElementById('rainbowBar');
+  const W = bar.offsetWidth || window.innerWidth;
+  // VT323 at 1.05rem ≈ ~8px per char with letter-spacing
+  const charW = 8;
+  const count = Math.ceil(W / charW) + 4;
+  let html = '';
+  for (let i = 0; i < count; i++) {
+    const col = rainbowColors[Math.floor((i / count) * rainbowColors.length)];
+    html += `<span style="color:${col}">|</span>`;
+  }
+  bar.innerHTML = html;
+
+  // Footer mini rainbow
+  const footer = document.getElementById('footerRainbow');
+  let fhtml = '';
+  for (let i = 0; i < 28; i++) {
+    const col = rainbowColors[Math.floor((i / 28) * rainbowColors.length)];
+    fhtml += `<span style="color:${col}">|</span>`;
+  }
+  footer.innerHTML = fhtml;
+}
+buildRainbowBar();
+window.addEventListener('resize', buildRainbowBar);
+
+// ══════════════════════════════════════════════
+//  EVENT DATA
+//  Set featured: true on ONE event
+// ══════════════════════════════════════════════
 const events = [
   {
-    tag:"// MUSIC", title:"SUMMER SOUNDS CONCERT",
-    desc:"Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
-    date:"FRI 14 AUG", time:"19:00 – 23:00", location:"Main Stage · Westpark", price:"FREE ENTRY",
-    ticketUrl:"#", emoji:"🎶", color:"var(--cyan)",
-    img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=70"
+    featured: true,
+    tag: "// MUSIC", title: "SUMMER SOUNDS CONCERT",
+    desc: "Three stages, twelve acts, one unforgettable night. Local bands and DJs take over Westpark for the opening night concert. All ages welcome.",
+    date: "FRI 14 AUG", time: "19:00 – 23:00", location: "Main Stage · Westpark", price: "FREE ENTRY",
+    ticketUrl: "#", emoji: "🎶", color: "var(--cyan)",
+    img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000&q=75"
   },
   {
-    tag:"// TALK", title:"BUILDING NEIGHBOURHOOD NETWORKS",
-    desc:"Urban planner Amara Osei shares research on how communities strengthen local ties. Followed by open Q&A and informal drinks.",
-    date:"SAT 15 AUG", time:"10:00 – 11:30", location:"Community Hall", price:"FREE",
-    ticketUrl:"#", emoji:"🎤", color:"var(--purple)",
-    img:"https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=70"
+    featured: false,
+    tag: "// TALK", title: "BUILDING NEIGHBOURHOOD NETWORKS",
+    desc: "Urban planner Amara Osei shares research on how communities strengthen local ties. Followed by open Q&A and informal drinks.",
+    date: "SAT 15 AUG", time: "10:00 – 11:30", location: "Community Hall", price: "FREE",
+    ticketUrl: "#", emoji: "🎤", color: "var(--purple)",
+    img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=70"
   },
   {
-    tag:"// FOOD", title:"STREET FOOD MARKET",
-    desc:"20+ local vendors serving food from around the world. Live cooking demos, tastings, and kids' activities. Vegan options at every stall.",
-    date:"SAT–SUN 15–16 AUG", time:"12:00 – 20:00", location:"East Lawn", price:"FREE ENTRY",
-    ticketUrl:"#", emoji:"🍕", color:"var(--yellow)",
-    img:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=70"
+    featured: false,
+    tag: "// FOOD", title: "STREET FOOD MARKET",
+    desc: "20+ local vendors serving food from around the world. Live cooking demos, tastings, and kids' activities. Vegan options at every stall.",
+    date: "SAT–SUN 15–16 AUG", time: "12:00 – 20:00", location: "East Lawn", price: "FREE ENTRY",
+    ticketUrl: "#", emoji: "🍕", color: "var(--yellow)",
+    img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=70"
   },
   {
-    tag:"// ART", title:"OPEN STUDIOS TOUR",
-    desc:"Self-guided tour through 18 local artist studios in the Arts Quarter. Pick up a map at the entrance. Artwork for sale.",
-    date:"SAT 15 AUG", time:"14:00 – 18:00", location:"Arts Quarter", price:"FREE",
-    ticketUrl:"#", emoji:"🎨", color:"var(--pink)",
-    img:"https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=70"
+    featured: false,
+    tag: "// ART", title: "OPEN STUDIOS TOUR",
+    desc: "Self-guided tour through 18 local artist studios in the Arts Quarter. Pick up a map at the entrance. Artwork for sale.",
+    date: "SAT 15 AUG", time: "14:00 – 18:00", location: "Arts Quarter", price: "FREE",
+    ticketUrl: "#", emoji: "🎨", color: "var(--pink)",
+    img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=70"
   },
   {
-    tag:"// SPORT", title:"COMMUNITY SPORTS DAY",
-    desc:"Volleyball, football, relay races, and more. Form a team or join one on the day. Medals for winners, glory for all. Kids' zone open all morning.",
-    date:"SUN 16 AUG", time:"09:00 – 13:00", location:"Sports Fields", price:"FREE",
-    ticketUrl:"#", emoji:"🏐", color:"var(--green)",
-    img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=70"
+    featured: false,
+    tag: "// SPORT", title: "COMMUNITY SPORTS DAY",
+    desc: "Volleyball, football, relay races, and more. Form a team or join one on the day. Medals for winners, glory for all.",
+    date: "SUN 16 AUG", time: "09:00 – 13:00", location: "Sports Fields", price: "FREE",
+    ticketUrl: "#", emoji: "🏐", color: "var(--green)",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=70"
   },
   {
-    tag:"// WORKSHOP", title:"INTRO TO URBAN GARDENING",
-    desc:"Hands-on workshop by Groenhart Collective. Learn composting, container growing, and how to turn any balcony into a productive green space.",
-    date:"SUN 16 AUG", time:"14:00 – 16:00", location:"Garden Pavilion", price:"€5 MATERIALS FEE",
-    ticketUrl:"#", emoji:"🌿", color:"var(--green)",
-    img:"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=70"
+    featured: false,
+    tag: "// WORKSHOP", title: "INTRO TO URBAN GARDENING",
+    desc: "Hands-on workshop by Groenhart Collective. Learn composting, container growing, and how to turn any balcony into a green space.",
+    date: "SUN 16 AUG", time: "14:00 – 16:00", location: "Garden Pavilion", price: "€5 MATERIALS FEE",
+    ticketUrl: "#", emoji: "🌿", color: "var(--green)",
+    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=70"
   }
 ];
 
-// ── RENDER CARDS ──────────────────────────────────────────────
+const gallerySlides = [
+  { emoji:"🎶", caption:"▸ SUMMER SOUNDS 2024" },
+  { emoji:"🎨", caption:"▸ OPEN STUDIOS TOUR 2024" },
+  { emoji:"🍕", caption:"▸ STREET FOOD MARKET 2024" },
+  { emoji:"🏐", caption:"▸ COMMUNITY SPORTS DAY 2024" },
+  { emoji:"🌿", caption:"▸ URBAN GARDENING WORKSHOP 2024" },
+  { emoji:"🎉", caption:"▸ CLOSING CEREMONY 2024" },
+];
+
+// ══════════════════════════════════════════════
+//  FEATURED CARD
+// ══════════════════════════════════════════════
+const featuredEv = events.find(e => e.featured) || events[0];
+const fi = events.indexOf(featuredEv);
+
+document.getElementById('featuredCard').innerHTML = `
+  <div class="featured-img-side">
+    <img class="featured-img" src="${featuredEv.img}" alt="${featuredEv.title}"
+         onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+    <div class="featured-img-ph" style="display:none">${featuredEv.emoji}</div>
+    <div class="featured-img-overlay"></div>
+  </div>
+  <div class="featured-info">
+    <span class="featured-tag" style="color:${featuredEv.color};text-shadow:0 0 8px ${featuredEv.color}">${featuredEv.tag}</span>
+    <h2 class="featured-title">${featuredEv.title}</h2>
+    <p class="featured-desc">${featuredEv.desc}</p>
+    <div class="featured-meta">
+      <span class="featured-meta-row">⏱ ${featuredEv.date} · ${featuredEv.time}</span>
+      <span class="featured-meta-row">📍 ${featuredEv.location}</span>
+      <span class="featured-meta-row">🎟 ${featuredEv.price}</span>
+    </div>
+    <button class="featured-btn" onclick="openModal(${fi})">▶ VIEW DETAILS & TICKETS</button>
+  </div>`;
+
+// ══════════════════════════════════════════════
+//  EVENT CARDS (non-featured)
+// ══════════════════════════════════════════════
 const grid = document.getElementById('eventsGrid');
-events.forEach((ev, i) => {
+const nonFeatured = events.filter((_, i) => i !== fi);
+document.getElementById('eventCount').textContent = `${nonFeatured.length} MORE`;
+
+nonFeatured.forEach(ev => {
+  const idx = events.indexOf(ev);
   const card = document.createElement('div');
   card.className = 'event-card';
   card.style.setProperty('--card-color', ev.color);
   card.innerHTML = `
     <div class="card-img-wrap">
-      <img class="card-img" src="${ev.img}" alt="${ev.title}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+      <img class="card-img" src="${ev.img}" alt="${ev.title}"
+           onerror="this.style.display='none';this.nextSibling.style.display='flex'">
       <div class="card-img-ph" style="display:none">${ev.emoji}</div>
     </div>
     <div class="card-body">
@@ -572,82 +682,107 @@ events.forEach((ev, i) => {
         <span class="card-press">PRESS</span>
       </div>
     </div>`;
-  card.addEventListener('click', () => openModal(i));
+  card.addEventListener('click', () => openModal(idx));
   grid.appendChild(card);
 });
 
-// ── MODAL ─────────────────────────────────────────────────────
+// ══════════════════════════════════════════════
+//  CAROUSEL
+// ══════════════════════════════════════════════
+const track = document.getElementById('carouselTrack');
+const dotsEl = document.getElementById('carouselDots');
+let current = 0;
+
+gallerySlides.forEach((slide, i) => {
+  const s = document.createElement('div');
+  s.className = 'carousel-slide';
+  s.innerHTML = `<div class="carousel-slide-ph">${slide.emoji}</div>
+                 <div class="carousel-caption">${slide.caption}</div>`;
+  track.appendChild(s);
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(dot);
+});
+
+function goTo(n) {
+  current = (n + gallerySlides.length) % gallerySlides.length;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+}
+document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+let touchStartX = 0;
+track.parentElement.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+track.parentElement.addEventListener('touchend',   e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+});
+
+// ══════════════════════════════════════════════
+//  MODAL
+// ══════════════════════════════════════════════
 function openModal(i) {
   const ev = events[i];
-  const overlay = document.getElementById('modalOverlay');
-  const modal   = document.getElementById('modal');
-
-  modal.style.setProperty('--mc', ev.color);
+  document.getElementById('modal').style.setProperty('--mc', ev.color);
   document.getElementById('modalBarTitle').textContent = ev.tag.replace('//', '').trim() + ' DATA';
-  document.getElementById('modalTag').textContent   = ev.tag;
-  document.getElementById('modalTag').style.color   = ev.color;
-  document.getElementById('modalTag').style.textShadow = `0 0 8px ${ev.color}`;
-  document.getElementById('modalTitle').textContent = ev.title;
-  document.getElementById('modalDesc').textContent  = ev.desc;
-
   document.getElementById('modalImgWrap').innerHTML = `
     <img class="modal-hero-img" src="${ev.img}" alt="${ev.title}"
          onerror="this.style.display='none';this.nextSibling.style.display='flex'">
-    <div class="modal-hero-ph" style="display:none">${ev.emoji}</div>`;
-
+    <div class="modal-hero-ph" style="background:var(--panel);border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`;
+  document.getElementById('modalTag').textContent   = ev.tag;
+  document.getElementById('modalTag').style.cssText = `color:${ev.color};text-shadow:0 0 8px ${ev.color}`;
+  document.getElementById('modalTitle').textContent = ev.title;
+  document.getElementById('modalDesc').textContent  = ev.desc;
   document.getElementById('modalInfoGrid').innerHTML = `
-    <div class="modal-info-block"><span class="modal-info-label">▸ DATE</span><span class="modal-info-value">${ev.date}</span></div>
-    <div class="modal-info-block"><span class="modal-info-label">▸ TIME</span><span class="modal-info-value">${ev.time}</span></div>
-    <div class="modal-info-block"><span class="modal-info-label">▸ LOCATION</span><span class="modal-info-value">${ev.location}</span></div>
-    <div class="modal-info-block"><span class="modal-info-label">▸ PRICE</span><span class="modal-info-value">${ev.price}</span></div>`;
-
+    <div class="modal-info-block">
+      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ DATE</span>
+      <span class="modal-info-value">${ev.date}</span>
+    </div>
+    <div class="modal-info-block">
+      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ TIME</span>
+      <span class="modal-info-value">${ev.time}</span>
+    </div>
+    <div class="modal-info-block">
+      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ LOCATION</span>
+      <span class="modal-info-value">${ev.location}</span>
+    </div>
+    <div class="modal-info-block">
+      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ PRICE</span>
+      <span class="modal-info-value">${ev.price}</span>
+    </div>`;
   const btn = document.getElementById('modalBtn');
   btn.href = ev.ticketUrl;
   btn.style.background = ev.color;
-
-  document.querySelectorAll('.mpx').forEach(p => p.style.background = ev.color);
-  overlay.classList.add('open');
+  document.querySelectorAll('.mpx').forEach(p => { p.style.background = ev.color; });
+  document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
-// ── STARS ─────────────────────────────────────────────────────
-const sf = document.getElementById('starfield');
-for (let i=0; i<130; i++){
-  const s = document.createElement('div');
-  s.className='star';
-  const sz = Math.random()*2.5+0.5;
-  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+1.5).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s`;
-  sf.appendChild(s);
+// ══════════════════════════════════════════════
+//  SUBSCRIBE
+// ══════════════════════════════════════════════
+function handleSubscribe() {
+  const val = document.getElementById('emailInput').value;
+  if (!val || !val.includes('@')) { document.getElementById('emailInput').style.borderColor = 'var(--pink)'; return; }
+  document.getElementById('subscribeForm').style.display = 'none';
+  document.getElementById('subscribeConfirm').style.display = 'block';
 }
 
-// ── PERSPECTIVE GRID ──────────────────────────────────────────
-const canvas = document.getElementById('gridCanvas');
-function drawGrid(){
-  const W = canvas.offsetWidth, H = canvas.offsetHeight;
-  canvas.width=W; canvas.height=H;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0,0,W,H);
-  const vx=W/2, cols=20, rows=18;
-  for(let r=0;r<=rows;r++){
-    const t=r/rows, ease=t*t, y=ease*H, spread=(W*0.5+W*0.5*ease);
-    ctx.beginPath();
-    ctx.moveTo(vx-spread/2,y); ctx.lineTo(vx+spread/2,y);
-    ctx.strokeStyle=`rgba(255,45,120,${0.06+ease*0.28})`; ctx.lineWidth=1; ctx.stroke();
-  }
-  for(let c=0;c<=cols;c++){
-    const t=c/cols, bx=(t-0.5)*W*1.15+W/2;
-    ctx.beginPath(); ctx.moveTo(vx,0); ctx.lineTo(bx,H);
-    ctx.strokeStyle='rgba(255,45,120,0.1)'; ctx.lineWidth=1; ctx.stroke();
-  }
+// ══════════════════════════════════════════════
+//  STARS
+// ══════════════════════════════════════════════
+const sf = document.getElementById('starfield');
+for (let i = 0; i < 130; i++) {
+  const s = document.createElement('div'); s.className = 'star';
+  const sz = Math.random()*2.5+0.5;
+  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+1.5).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s`;
+  sf.appendChild(s);
 }
-drawGrid();
-window.addEventListener('resize', drawGrid);
 </script>
 
 </body>
 </html>
-
