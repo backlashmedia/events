@@ -35,11 +35,9 @@
       content: ''; position: fixed; inset: 0; z-index: 9997; pointer-events: none;
       background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
     }
-
     .starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
     .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; }
     @keyframes twinkle { from{opacity:.08} to{opacity:.8} }
-
     .rainbow-bar {
       position: relative; z-index: 210;
       width: 100%; overflow: hidden;
@@ -49,7 +47,6 @@
       letter-spacing: 0.05em; white-space: nowrap; user-select: none;
     }
     .rainbow-bar span { display: inline; }
-
     nav {
       position: relative; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
@@ -60,10 +57,8 @@
     .nav-logo {
       font-family: 'Press Start 2P', monospace; font-size: 0.48rem;
       line-height: 1.9; color: var(--cyan); text-shadow: 0 0 10px var(--cyan);
-      text-decoration: none; letter-spacing: 0.06em;
+      text-decoration: none; letter-spacing: 0.06em; white-space: nowrap;
     }
-
-    /* ── HERO ── */
     .hero {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: column;
@@ -99,8 +94,6 @@
       font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: var(--cyan);
       text-shadow: 0 0 12px rgba(0,255,231,0.5); letter-spacing: 0.12em;
     }
-
-    /* ── LOADING STATE ── */
     .loading-state {
       font-family: 'Press Start 2P', monospace; font-size: 0.55rem;
       color: var(--cyan); text-shadow: 0 0 10px var(--cyan); letter-spacing: 0.1em;
@@ -111,8 +104,6 @@
       padding: 2rem; border: 1px dashed var(--pink); max-width: 500px; margin: 0 auto;
       line-height: 1.6;
     }
-
-    /* ── FEATURED / COMING UP ── */
     .featured-wrap {
       position: relative; z-index: 2;
       width: min(820px, 92vw); margin: 0 auto;
@@ -158,8 +149,6 @@
     }
     .featured-btn::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.06) 4px, rgba(0,0,0,0.06) 8px); }
     .featured-btn:hover { filter: brightness(1.15); }
-
-    /* ── EVENTS ── */
     #events { position: relative; z-index: 1; padding: 4rem 2.5rem; }
     #events > *, #gallery > *, #subscribe > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
     .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
@@ -188,20 +177,9 @@
     .card-footer { margin-top: auto; padding-top: 0.8rem; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
     .card-cta { font-size: 0.85rem; color: var(--card-color, var(--cyan)); text-shadow: 0 0 6px var(--card-color, var(--cyan)); }
     .card-press { font-size: 0.75rem; color: rgba(255,255,255,0.2); animation: blink 1.2s step-end infinite; }
-
-    /* ── GALLERY ── */
     #gallery { position: relative; z-index: 1; padding: 0 2.5rem 4rem; }
     #gallery .section-title { color: var(--purple); text-shadow: 3px 3px 0 rgba(180,79,255,0.25), 0 0 20px var(--purple); }
     #gallery .section-line  { background: linear-gradient(to right, var(--purple), transparent); }
-    .gallery-upload-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-    .gallery-upload-btn {
-      font-family: 'Press Start 2P', monospace; font-size: 0.48rem;
-      padding: 0.7rem 1rem; border: 2px solid var(--purple); background: transparent;
-      color: var(--purple); text-shadow: 0 0 8px var(--purple); cursor: pointer; transition: background 0.15s, color 0.15s;
-    }
-    .gallery-upload-btn:hover { background: var(--purple); color: var(--black); text-shadow: none; }
-    #galleryFileInput { display: none; }
-    .gallery-upload-note { font-size: 0.95rem; color: rgba(240,234,255,0.3); letter-spacing: 0.06em; line-height: 1.5; }
     .carousel-wrap { position: relative; }
     .carousel-track-outer { overflow: hidden; border: 2px solid var(--purple); box-shadow: 4px 4px 0 var(--purple); }
     .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
@@ -216,8 +194,6 @@
     .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap; }
     .carousel-dot { width: 10px; height: 10px; background: rgba(180,79,255,0.3); border: 1px solid var(--purple); cursor: pointer; transition: background 0.2s; }
     .carousel-dot.active { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
-
-    /* ── SUBSCRIBE ── */
     #subscribe { position: relative; z-index: 1; padding: 0 2.5rem 5rem; }
     #subscribe .section-title { color: var(--green); text-shadow: 3px 3px 0 rgba(57,255,110,0.25), 0 0 20px var(--green); }
     #subscribe .section-line  { background: linear-gradient(to right, var(--green), transparent); }
@@ -232,14 +208,11 @@
     .subscribe-btn:hover { filter: brightness(1.15); }
     .subscribe-confirm { font-size: 1.1rem; color: var(--green); text-shadow: 0 0 8px var(--green); display: none; letter-spacing: 0.1em; }
     .subscribe-error { font-size: 1rem; color: var(--pink); display: none; letter-spacing: 0.08em; margin-top: -0.5rem; }
-
-    /* ── FOOTER ── */
     footer { position: relative; z-index: 1; border-top: 3px solid var(--cyan); padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--dark); }
-    .footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); line-height: 1.8; }
+    .footer-logo { font-family: 'Press Start 2P', monospace; font-size: 0.5rem; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); line-height: 1.8; white-space: nowrap; text-decoration: none; }
+    .footer-logo:hover { text-shadow: 0 0 20px var(--cyan); }
     .footer-copy { font-size: 0.85rem; color: rgba(240,234,255,0.28); }
     .footer-rainbow { font-size: 1rem; letter-spacing: 0.05em; }
-
-    /* ── MODAL ── */
     .modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(5,2,15,0.93); display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; backdrop-filter: blur(6px); }
     .modal-overlay.open { opacity: 1; visibility: visible; }
     .modal { background: var(--panel); border: 3px solid var(--mc, var(--cyan)); box-shadow: 8px 8px 0 var(--mc, var(--cyan)); max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto; transform: scale(0.92) translateY(20px); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
@@ -264,9 +237,7 @@
     .modal-pixels { display: flex; gap: 6px; align-items: center; justify-content: center; }
     .mpx { width: 8px; height: 8px; opacity: 0.4; }
     .mpx.wide { width: 16px; }
-
     @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-
     @media(max-width:780px){
       .featured-card { grid-template-columns: 1fr; }
       .featured-img-side { min-height: 200px; }
@@ -289,7 +260,7 @@
 <div class="rainbow-bar" id="rainbowBar"></div>
 
 <nav>
-  <a href="#" class="nav-logo" id="navLogo">BACKLASH MEDIA<br>EVENTS</a>
+  <a href="#" class="nav-logo">BACKLASH MEDIA EVENTS</a>
 </nav>
 
 <section class="hero">
@@ -304,7 +275,7 @@
   <div class="featured-wrap">
     <div class="featured-label">COMING UP</div>
     <div class="featured-card" id="featuredCard">
-      <div class="loading-state">▸ LOADING EVENTS...</div>
+      <div class="loading-state">LOADING EVENTS...</div>
     </div>
   </div>
 </section>
@@ -316,7 +287,7 @@
     <span class="section-count" id="eventCount"></span>
   </div>
   <div class="events-grid" id="eventsGrid">
-    <div class="loading-state">▸ LOADING...</div>
+    <div class="loading-state">LOADING...</div>
   </div>
 </section>
 
@@ -326,11 +297,11 @@
     <div class="section-line"></div>
   </div>
   <div class="carousel-wrap">
-    <button class="carousel-btn prev" id="carouselPrev">◀</button>
+    <button class="carousel-btn prev" id="carouselPrev">&#9664;</button>
     <div class="carousel-track-outer">
       <div class="carousel-track" id="carouselTrack"></div>
     </div>
-    <button class="carousel-btn next" id="carouselNext">▶</button>
+    <button class="carousel-btn next" id="carouselNext">&#9654;</button>
   </div>
   <div class="carousel-dots" id="carouselDots"></div>
 </section>
@@ -345,15 +316,15 @@
     <p class="subscribe-sub">Get updates on new events, announcements, and community news. No spam. Unsubscribe anytime.</p>
     <div class="subscribe-form" id="subscribeForm">
       <input class="subscribe-input" id="emailInput" type="email" placeholder="YOUR@EMAIL.COM" />
-      <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">▶ JOIN</button>
+      <button class="subscribe-btn" id="subscribeBtn" onclick="handleSubscribe()">JOIN</button>
     </div>
-    <p class="subscribe-error" id="subscribeError">▸ PLEASE ENTER A VALID EMAIL ADDRESS.</p>
-    <p class="subscribe-confirm" id="subscribeConfirm">✓ YOU'RE IN! SEE YOU AT THE GATHERING.</p>
+    <p class="subscribe-error" id="subscribeError">PLEASE ENTER A VALID EMAIL ADDRESS.</p>
+    <p class="subscribe-confirm" id="subscribeConfirm">YOU ARE IN! SEE YOU AT THE GATHERING.</p>
   </div>
 </section>
 
 <footer>
-  <span class="footer-logo">BACKLASH MEDIA<br>EVENTS © 2025</span>
+  <a href="https://backlashproductions.nl" target="_blank" class="footer-logo">BACKLASH MEDIA EVENTS</a>
   <span class="footer-copy" id="footerCopy">BENT STORIES · PROUD PERSPECTIVES · OUT LOUD</span>
   <span class="footer-rainbow" id="footerRainbow"></span>
 </footer>
@@ -362,15 +333,15 @@
   <div class="modal" id="modal">
     <div class="modal-bar">
       <span class="modal-bar-title" id="modalBarTitle">EVENT DATA</span>
-      <button class="modal-close" onclick="closeModalDirect()">✕ CLOSE</button>
+      <button class="modal-close" onclick="closeModalDirect()">X CLOSE</button>
     </div>
     <div id="modalImgWrap"></div>
     <div class="modal-body">
-      <span class="modal-tag"  id="modalTag"></span>
-      <h2  class="modal-title" id="modalTitle"></h2>
-      <p   class="modal-desc"  id="modalDesc"></p>
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
       <div class="modal-info-grid" id="modalInfoGrid"></div>
-      <a href="#" class="modal-ticket-btn" id="modalBtn" target="_blank">▶ GET TICKETS / REGISTER</a>
+      <a href="#" class="modal-ticket-btn" id="modalBtn" target="_blank">GET TICKETS / REGISTER</a>
       <div class="modal-pixels" id="modalPixels">
         <div class="mpx"></div><div class="mpx"></div><div class="mpx"></div>
         <div class="mpx wide"></div>
@@ -381,324 +352,272 @@
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════════════
-//  ▸ CONFIGURATION — update these two lines, nothing else needed
-// ══════════════════════════════════════════════════════════════
+var GITHUB_USER = 'backlashmedia';
+var GITHUB_REPO = 'events';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzw0WxeKc_5MIuLIQ4YYxQ9KG8L3BZVo-iToTEeJHO5dEJvYxn8uNY9nED0vlLfzOo/exec';
 
-// Replace with your GitHub username and repo name.
-// The page will load events.json from this URL automatically.
-const GITHUB_USER     = 'YOUR_GITHUB_USERNAME';
-const GITHUB_REPO     = 'YOUR_REPO_NAME';
+var DATA_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/events.json';
+var BASE_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/main/';
 
-// Paste your Google Apps Script Web App URL here after deploying it.
-// Leave empty ('') to disable the mailing list feature.
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzw0WxeKc_5MIuLIQ4YYxQ9KG8L3BZVo-iToTEeJHO5dEJvYxn8uNY9nED0vlLfzOo/exec';
+var eventsData = [];
 
-// ══════════════════════════════════════════════════════════════
-//  Everything below this line runs automatically — don't edit
-// ══════════════════════════════════════════════════════════════
-
-const DATA_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/events.json`;
-const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/`;
-
-let eventsData = [];
-
-// ── RAINBOW BAR ──
-const rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
+var rainbowColors = ['#FF0018','#FF7A00','#FFE600','#00C800','#0096FF','#8B00FF'];
 function buildRainbowBar() {
-  const bar = document.getElementById('rainbowBar');
-  const W = bar.offsetWidth || window.innerWidth;
-  const count = Math.ceil(W / 8) + 4;
-  let html = '';
-  for (let i = 0; i < count; i++) {
-    const col = rainbowColors[Math.floor((i / count) * rainbowColors.length)];
-    html += `<span style="color:${col}">|</span>`;
+  var bar = document.getElementById('rainbowBar');
+  var W = bar.offsetWidth || window.innerWidth;
+  var count = Math.ceil(W / 8) + 4;
+  var html = '';
+  for (var i = 0; i < count; i++) {
+    var col = rainbowColors[Math.floor((i / count) * rainbowColors.length)];
+    html += '<span style="color:' + col + '">|</span>';
   }
   bar.innerHTML = html;
-  const footer = document.getElementById('footerRainbow');
-  let fhtml = '';
-  for (let i = 0; i < 28; i++) {
-    const col = rainbowColors[Math.floor((i / 28) * rainbowColors.length)];
-    fhtml += `<span style="color:${col}">|</span>`;
+  var footer = document.getElementById('footerRainbow');
+  var fhtml = '';
+  for (var j = 0; j < 28; j++) {
+    var fcol = rainbowColors[Math.floor((j / 28) * rainbowColors.length)];
+    fhtml += '<span style="color:' + fcol + '">|</span>';
   }
   footer.innerHTML = fhtml;
 }
 buildRainbowBar();
 window.addEventListener('resize', buildRainbowBar);
 
-// ── LOAD DATA FROM GITHUB ──
-async function loadData() {
-  try {
-    const res = await fetch(DATA_URL + '?t=' + Date.now()); // cache-bust
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    eventsData = data.events || [];
-    renderAll(data);
-  } catch (err) {
-    console.error('Failed to load events.json:', err);
-    document.getElementById('featuredCard').innerHTML = `
-      <div class="error-state">
-        ▸ COULD NOT LOAD EVENTS<br><br>
-        Make sure GITHUB_USER and GITHUB_REPO are set correctly in index.html,
-        and that events.json exists in your repository root.<br><br>
-        <small style="opacity:0.5">${err.message}</small>
-      </div>`;
-    document.getElementById('eventsGrid').innerHTML = '';
-  }
+function loadData() {
+  fetch(DATA_URL + '?t=' + Date.now())
+    .then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      eventsData = data.events || [];
+      renderAll(data);
+    })
+    .catch(function(err) {
+      document.getElementById('featuredCard').innerHTML = '<div class="error-state">COULD NOT LOAD EVENTS. Check GITHUB_USER and GITHUB_REPO in index.html.<br><br>' + err.message + '</div>';
+      document.getElementById('eventsGrid').innerHTML = '';
+    });
 }
 
 function resolveImg(img) {
   if (!img) return null;
-  // If it's already a full URL, use it directly
-  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) return img;
-  // Otherwise treat as a relative path inside the repo
+  if (img.indexOf('http://') === 0 || img.indexOf('https://') === 0 || img.indexOf('data:') === 0) return img;
   return BASE_URL + img;
 }
 
-// ── RENDER EVERYTHING ──
 function renderAll(data) {
-  // Site config
   if (data.siteConfig) {
     if (data.siteConfig.tagline) document.getElementById('heroTagline').textContent = data.siteConfig.tagline;
     if (data.siteConfig.footerCopy) document.getElementById('footerCopy').textContent = data.siteConfig.footerCopy;
     if (data.siteConfig.title) document.title = data.siteConfig.title;
   }
-
-  // Featured event
-  const featuredEv = eventsData.find(e => e.featured) || eventsData[0];
-  const fi = eventsData.indexOf(featuredEv);
+  var featuredEv = null;
+  for (var i = 0; i < eventsData.length; i++) {
+    if (eventsData[i].featured) { featuredEv = eventsData[i]; break; }
+  }
+  if (!featuredEv) featuredEv = eventsData[0];
+  var fi = eventsData.indexOf(featuredEv);
   renderFeatured(featuredEv, fi);
-
-  // Other events
-  const nonFeatured = eventsData.filter((_, i) => i !== fi);
-  document.getElementById('eventCount').textContent = `${nonFeatured.length} EVENTS`;
+  var nonFeatured = eventsData.filter(function(_, i) { return i !== fi; });
+  document.getElementById('eventCount').textContent = nonFeatured.length + ' EVENTS';
   renderEventCards(nonFeatured);
-
-  // Gallery
   if (data.gallery) renderGallery(data.gallery);
 }
 
 function renderFeatured(ev, fi) {
-  const imgSrc = resolveImg(ev.img);
-  document.getElementById('featuredCard').innerHTML = `
-    <div class="featured-img-side">
-      ${imgSrc
-        ? `<img class="featured-img" src="${imgSrc}" alt="${ev.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : ''}
-      <div class="featured-img-ph" style="${imgSrc ? 'display:none' : ''}">${ev.emoji}</div>
-      <div class="featured-img-overlay"></div>
-    </div>
-    <div class="featured-info">
-      <span class="featured-tag" style="color:${ev.color};text-shadow:0 0 8px ${ev.color}">${ev.tag}</span>
-      <h2 class="featured-title">${ev.title}</h2>
-      <p class="featured-desc">${ev.desc}</p>
-      <div class="featured-meta">
-        <span class="featured-meta-row">⏱ ${ev.date} · ${ev.time}</span>
-        <span class="featured-meta-row">📍 ${ev.location}</span>
-        <span class="featured-meta-row">🎟 ${ev.price}</span>
-      </div>
-      <button class="featured-btn" onclick="openModal(${fi})">▶ VIEW DETAILS & TICKETS</button>
-    </div>`;
+  var imgSrc = resolveImg(ev.img);
+  var imgHtml = imgSrc
+    ? '<img class="featured-img" src="' + imgSrc + '" alt="' + ev.title + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+    : '';
+  var phStyle = imgSrc ? 'display:none' : '';
+  document.getElementById('featuredCard').innerHTML =
+    '<div class="featured-img-side">' +
+      imgHtml +
+      '<div class="featured-img-ph" style="' + phStyle + '">' + ev.emoji + '</div>' +
+      '<div class="featured-img-overlay"></div>' +
+    '</div>' +
+    '<div class="featured-info">' +
+      '<span class="featured-tag" style="color:' + ev.color + ';text-shadow:0 0 8px ' + ev.color + '">' + ev.tag + '</span>' +
+      '<h2 class="featured-title">' + ev.title + '</h2>' +
+      '<p class="featured-desc">' + ev.desc + '</p>' +
+      '<div class="featured-meta">' +
+        '<span class="featured-meta-row">' + ev.date + ' · ' + ev.time + '</span>' +
+        '<span class="featured-meta-row">' + ev.location + '</span>' +
+        '<span class="featured-meta-row">' + ev.price + '</span>' +
+      '</div>' +
+      '<button class="featured-btn" onclick="openModal(' + fi + ')">VIEW DETAILS AND TICKETS</button>' +
+    '</div>';
 }
 
 function renderEventCards(nonFeatured) {
-  const grid = document.getElementById('eventsGrid');
+  var grid = document.getElementById('eventsGrid');
   grid.innerHTML = '';
-  nonFeatured.forEach(ev => {
-    const idx = eventsData.indexOf(ev);
-    const imgSrc = resolveImg(ev.img);
-    const card = document.createElement('div');
+  nonFeatured.forEach(function(ev) {
+    var idx = eventsData.indexOf(ev);
+    var imgSrc = resolveImg(ev.img);
+    var imgHtml = imgSrc
+      ? '<img class="card-img" src="' + imgSrc + '" alt="' + ev.title + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      : '';
+    var phStyle = imgSrc ? 'display:none' : '';
+    var card = document.createElement('div');
     card.className = 'event-card';
     card.style.setProperty('--card-color', ev.color);
-    card.innerHTML = `
-      <div class="card-img-wrap">
-        ${imgSrc
-          ? `<img class="card-img" src="${imgSrc}" alt="${ev.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-          : ''}
-        <div class="card-img-ph" style="${imgSrc ? 'display:none' : ''}">${ev.emoji}</div>
-      </div>
-      <div class="card-body">
-        <span class="card-tag">${ev.tag}</span>
-        <h3 class="card-title">${ev.title}</h3>
-        <span class="card-detail">⏱ ${ev.date} · ${ev.time}</span>
-        <span class="card-detail">📍 ${ev.location}</span>
-        <div class="card-footer">
-          <span class="card-cta">▶ VIEW INFO</span>
-          <span class="card-press">PRESS</span>
-        </div>
-      </div>`;
-    card.addEventListener('click', () => openModal(idx));
+    card.innerHTML =
+      '<div class="card-img-wrap">' +
+        imgHtml +
+        '<div class="card-img-ph" style="' + phStyle + '">' + ev.emoji + '</div>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<span class="card-tag">' + ev.tag + '</span>' +
+        '<h3 class="card-title">' + ev.title + '</h3>' +
+        '<span class="card-detail">' + ev.date + ' · ' + ev.time + '</span>' +
+        '<span class="card-detail">' + ev.location + '</span>' +
+        '<div class="card-footer">' +
+          '<span class="card-cta">VIEW INFO</span>' +
+          '<span class="card-press">PRESS</span>' +
+        '</div>' +
+      '</div>';
+    card.addEventListener('click', function() { openModal(idx); });
     grid.appendChild(card);
   });
 }
 
-// ── GALLERY ──
-const track   = document.getElementById('carouselTrack');
-const dotsEl  = document.getElementById('carouselDots');
-let current   = 0;
+var track = document.getElementById('carouselTrack');
+var dotsEl = document.getElementById('carouselDots');
+var current = 0;
 
 function renderGallery(slides) {
   track.innerHTML = '';
   dotsEl.innerHTML = '';
-  slides.forEach((slide, i) => {
-    const imgSrc = resolveImg(slide.img);
-    addCarouselSlide(imgSrc, slide.caption, slide.emoji || '🖼');
+  slides.forEach(function(slide) {
+    var imgSrc = resolveImg(slide.img);
+    addCarouselSlide(imgSrc, slide.caption, slide.emoji || '');
   });
   rebuildDots();
   goTo(0);
 }
 
 function addCarouselSlide(src, caption, emoji) {
-  const s = document.createElement('div');
+  var s = document.createElement('div');
   s.className = 'carousel-slide';
-  s.innerHTML = src
-    ? `<img src="${src}" alt="${caption}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-       <div class="carousel-slide-ph" style="display:none">${emoji}</div>
-       <div class="carousel-caption">${caption}</div>`
-    : `<div class="carousel-slide-ph">${emoji}</div>
-       <div class="carousel-caption">${caption}</div>`;
+  if (src) {
+    s.innerHTML = '<img src="' + src + '" alt="' + caption + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+      '<div class="carousel-slide-ph" style="display:none">' + emoji + '</div>' +
+      '<div class="carousel-caption">' + caption + '</div>';
+  } else {
+    s.innerHTML = '<div class="carousel-slide-ph">' + emoji + '</div>' +
+      '<div class="carousel-caption">' + caption + '</div>';
+  }
   track.appendChild(s);
 }
 
 function rebuildDots() {
   dotsEl.innerHTML = '';
-  Array.from(track.children).forEach((_, i) => {
-    const dot = document.createElement('div');
+  var slides = track.children;
+  for (var i = 0; i < slides.length; i++) {
+    var dot = document.createElement('div');
     dot.className = 'carousel-dot' + (i === current ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
+    (function(idx) { dot.addEventListener('click', function() { goTo(idx); }); })(i);
     dotsEl.appendChild(dot);
-  });
+  }
 }
 
 function goTo(n) {
-  const total = track.children.length;
+  var total = track.children.length;
   if (!total) return;
   current = (n + total) % total;
-  track.style.transform = `translateX(-${current * 100}%)`;
-  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  track.style.transform = 'translateX(-' + (current * 100) + '%)';
+  var dots = document.querySelectorAll('.carousel-dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
 }
-document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
-document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+document.getElementById('carouselPrev').addEventListener('click', function() { goTo(current - 1); });
+document.getElementById('carouselNext').addEventListener('click', function() { goTo(current + 1); });
 
-let touchStartX = 0;
-track.parentElement.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
-track.parentElement.addEventListener('touchend',   e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
+var touchStartX = 0;
+track.parentElement.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+track.parentElement.addEventListener('touchend', function(e) {
+  var diff = touchStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
 });
 
-function handleGalleryUpload(event) {
-  Array.from(event.target.files).forEach(file => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const caption = '▸ ' + file.name.toUpperCase().replace(/\.[^.]+$/, '');
-      addCarouselSlide(e.target.result, caption, '🖼');
-      rebuildDots();
-      goTo(track.children.length - 1);
-    };
-    reader.readAsDataURL(file);
-  });
-  event.target.value = '';
-}
-
-// ── MODAL ──
 function openModal(i) {
-  const ev = eventsData[i];
+  var ev = eventsData[i];
   if (!ev) return;
-  const imgSrc = resolveImg(ev.img);
+  var imgSrc = resolveImg(ev.img);
   document.getElementById('modal').style.setProperty('--mc', ev.color);
   document.getElementById('modalBarTitle').textContent = ev.tag.replace('//', '').trim() + ' DATA';
-  document.getElementById('modalImgWrap').innerHTML = imgSrc
-    ? `<img class="modal-hero-img" src="${imgSrc}" alt="${ev.title}"
-           onerror="this.style.display='none';this.nextElementSibling.style.removeProperty('display')">
-       <div class="modal-hero-ph" style="display:none;border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`
-    : `<div class="modal-hero-ph" style="border-bottom:3px solid ${ev.color}">${ev.emoji}</div>`;
-  document.getElementById('modalTag').textContent   = ev.tag;
-  document.getElementById('modalTag').style.cssText = `color:${ev.color};text-shadow:0 0 8px ${ev.color}`;
+  if (imgSrc) {
+    document.getElementById('modalImgWrap').innerHTML =
+      '<img class="modal-hero-img" src="' + imgSrc + '" alt="' + ev.title + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.removeProperty(\'display\')">' +
+      '<div class="modal-hero-ph" style="display:none;border-bottom:3px solid ' + ev.color + '">' + ev.emoji + '</div>';
+  } else {
+    document.getElementById('modalImgWrap').innerHTML =
+      '<div class="modal-hero-ph" style="border-bottom:3px solid ' + ev.color + '">' + ev.emoji + '</div>';
+  }
+  document.getElementById('modalTag').textContent = ev.tag;
+  document.getElementById('modalTag').style.cssText = 'color:' + ev.color + ';text-shadow:0 0 8px ' + ev.color;
   document.getElementById('modalTitle').textContent = ev.title;
-  document.getElementById('modalDesc').textContent  = ev.desc;
-  document.getElementById('modalInfoGrid').innerHTML = `
-    <div class="modal-info-block">
-      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ DATE</span>
-      <span class="modal-info-value">${ev.date}</span>
-    </div>
-    <div class="modal-info-block">
-      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ TIME</span>
-      <span class="modal-info-value">${ev.time}</span>
-    </div>
-    <div class="modal-info-block">
-      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ LOCATION</span>
-      <span class="modal-info-value">${ev.location}</span>
-    </div>
-    <div class="modal-info-block">
-      <span class="modal-info-label" style="color:${ev.color};text-shadow:0 0 6px ${ev.color}">▸ PRICE</span>
-      <span class="modal-info-value">${ev.price}</span>
-    </div>`;
-  const btn = document.getElementById('modalBtn');
+  document.getElementById('modalDesc').textContent = ev.desc;
+  document.getElementById('modalInfoGrid').innerHTML =
+    '<div class="modal-info-block"><span class="modal-info-label" style="color:' + ev.color + '">DATE</span><span class="modal-info-value">' + ev.date + '</span></div>' +
+    '<div class="modal-info-block"><span class="modal-info-label" style="color:' + ev.color + '">TIME</span><span class="modal-info-value">' + ev.time + '</span></div>' +
+    '<div class="modal-info-block"><span class="modal-info-label" style="color:' + ev.color + '">LOCATION</span><span class="modal-info-value">' + ev.location + '</span></div>' +
+    '<div class="modal-info-block"><span class="modal-info-label" style="color:' + ev.color + '">PRICE</span><span class="modal-info-value">' + ev.price + '</span></div>';
+  var btn = document.getElementById('modalBtn');
   btn.href = ev.ticketUrl;
   btn.style.background = ev.color;
-  document.querySelectorAll('.mpx').forEach(p => { p.style.background = ev.color; });
+  document.querySelectorAll('.mpx').forEach(function(p) { p.style.background = ev.color; });
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModalDirect(); });
 
-// ── SUBSCRIBE → GOOGLE SHEETS ──
-async function handleSubscribe() {
-  const emailEl = document.getElementById('emailInput');
-  const email   = emailEl.value.trim();
-  const errEl   = document.getElementById('subscribeError');
-  const btn     = document.getElementById('subscribeBtn');
-
+function handleSubscribe() {
+  var emailEl = document.getElementById('emailInput');
+  var email = emailEl.value.trim();
+  var errEl = document.getElementById('subscribeError');
+  var btn = document.getElementById('subscribeBtn');
   errEl.style.display = 'none';
   emailEl.style.borderColor = 'var(--green)';
-
-  if (!email || !email.includes('@') || !email.includes('.')) {
+  if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
     emailEl.style.borderColor = 'var(--pink)';
     errEl.style.display = 'block';
     return;
   }
-
   if (!APPS_SCRIPT_URL) {
-    // No backend configured — just show confirm message locally
     document.getElementById('subscribeForm').style.display = 'none';
     document.getElementById('subscribeConfirm').style.display = 'block';
     return;
   }
-
-  btn.textContent = '▸ SENDING...';
+  btn.textContent = 'SENDING...';
   btn.disabled = true;
-
-  try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors', // Google Apps Script requires this
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
-    // no-cors means we can't read the response, but if it didn't throw it worked
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(function() {
     document.getElementById('subscribeForm').style.display = 'none';
     document.getElementById('subscribeConfirm').style.display = 'block';
-  } catch (err) {
-    btn.textContent = '▶ JOIN';
+  }).catch(function() {
+    btn.textContent = 'JOIN';
     btn.disabled = false;
-    errEl.textContent = '▸ SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
+    errEl.textContent = 'SOMETHING WENT WRONG. PLEASE TRY AGAIN.';
     errEl.style.display = 'block';
-  }
+  });
 }
 
-// ── STARS ──
-const sf = document.getElementById('starfield');
-for (let i = 0; i < 130; i++) {
-  const s = document.createElement('div'); s.className = 'star';
-  const sz = Math.random()*2.5+0.5;
-  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+1.5).toFixed(1)}s;animation-delay:${(Math.random()*5).toFixed(1)}s`;
+var sf = document.getElementById('starfield');
+for (var i = 0; i < 130; i++) {
+  var s = document.createElement('div');
+  s.className = 'star';
+  var sz = Math.random() * 2.5 + 0.5;
+  s.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;top:' + Math.random()*100 + '%;left:' + Math.random()*100 + '%;--d:' + (Math.random()*4+1.5).toFixed(1) + 's;animation-delay:' + (Math.random()*5).toFixed(1) + 's';
   sf.appendChild(s);
 }
 
-// ── BOOT ──
 loadData();
 </script>
 </body>
