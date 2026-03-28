@@ -459,6 +459,17 @@ function renderAll(data) {
   }
   // Filter out past events before rendering
   eventsData = eventsData.filter(function(ev) { return !isExpired(ev); });
+  // Sort: pinned first, then by date ascending
+  eventsData.sort(function(a, b) {
+    if (a.pin && !b.pin) return -1;
+    if (!a.pin && b.pin) return 1;
+    var da = parseEventDate(a.date);
+    var db = parseEventDate(b.date);
+    if (!da && !db) return 0;
+    if (!da) return 1;
+    if (!db) return -1;
+    return da - db;
+  });
   var featuredEv = null;
   for (var i = 0; i < eventsData.length; i++) {
     if (eventsData[i].featured) { featuredEv = eventsData[i]; break; }
