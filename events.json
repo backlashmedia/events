@@ -130,7 +130,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--cyan)",
-      "img": "images/image.jpg"
+      "img": "images/generic_brave_space.jpg"
     },
     {
       "featured": false,
@@ -144,7 +144,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--purple)",
-      "img": "images/generic_brave_space.jpg"
+      "img": "images/2.jpg"
     },
     {
       "featured": false,
@@ -158,7 +158,7 @@
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--green)",
-      "img": "images/generic_brave_space.jpg"
+      "img": "images/3.jpg"
     },
     {
       "featured": false,
