@@ -6,7 +6,7 @@
   },
   "events": [
     {
-      "featured": true,
+      "featured": false,
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE: TRANS DAY OF VISIBILITY EDITION",
       "desc": "A special XL edition of Brave Space making room for trans voices that are too often sidelined. Featuring Joseph Kearney, Diana Salles, Indie Nile, Dora Royale, Emma Voerman, Liora ten Brinke & Kaya. Pay what you can.",
@@ -133,7 +133,7 @@
       "img": "images/generic_brave_space.jpg"
     },
     {
-      "featured": false,
+      "featured": true,
       "tag": "// QUIZ",
       "title": "BIG GAY NAKED PUB QUIZ",
       "desc": "Our raucously fun queer pub quiz night at Free Willy. Test your knowledge, make new friends, and win glory. No clothes required — but they’re allowed.",
