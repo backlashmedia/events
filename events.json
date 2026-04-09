@@ -63,7 +63,7 @@
       "img": "images/generic_brave_space.jpg"
     },
     {
-      "featured": false,
+      "featured": true,
       "tag": "// STORYTELLING",
       "title": "BRAVE SPACE Spring Fling",
       "desc": "The tenth edition of Backlash Media’s flagship queer storytelling night at Theater Bellevue. Bold voices, real stories, proud perspectives.",
@@ -71,7 +71,7 @@
       "time": "20:00",
       "location": "Theater Bellevue",
       "price": "€9.50 – €19.00",
-      "ticketUrl": "#",
+      "ticketUrl": "https://www.theaterbellevue.nl/agenda/brave-space-a-new-evening-of-queer-storytelling-57xr",
       "emoji": "",
       "color": "var(--red)",
       "img": "images/Brave_Space_April2026.jpg"
@@ -133,15 +133,15 @@
       "img": "images/generic_brave_space.jpg"
     },
     {
-      "featured": true,
+      "featured": false,
       "tag": "// QUIZ",
       "title": "BIG GAY NAKED PUB QUIZ",
       "desc": "Our raucously fun queer pub quiz night at Free Willy. Test your knowledge, make new friends, and win glory. No clothes required — but they’re allowed.",
       "date": "Thu 9 Apr",
       "time": "20:30",
       "location": "Free Willy",
-      "price": "TBC",
-      "ticketUrl": "#",
+      "price": "Pay at the door",
+      "ticketUrl": "https://www.freewillie.nl/big-naked-pub-quiz",
       "emoji": "",
       "color": "var(--purple)",
       "img": "images/2.jpg"
@@ -154,7 +154,7 @@
       "date": "Thu 14 May",
       "time": "20:30",
       "location": "Free Willy",
-      "price": "TBC",
+      "price": "Pay at the door",
       "ticketUrl": "#",
       "emoji": "",
       "color": "var(--green)",
@@ -168,8 +168,8 @@
       "date": "Thu 4 Jun",
       "time": "20:30",
       "location": "Free Willy",
-      "price": "TBC",
-      "ticketUrl": "#",
+      "price": "Pay at the door",
+      "ticketUrl": "https://www.freewillie.nl/big-naked-pub-quiz",
       "emoji": "",
       "color": "var(--red)",
       "img": "images/4.jpg"
@@ -182,8 +182,8 @@
       "date": "Thu 9 Jul",
       "time": "20:30",
       "location": "Free Willy",
-      "price": "TBC",
-      "ticketUrl": "#",
+      "price": "Pay at the door",
+      "ticketUrl": "https://www.freewillie.nl/big-naked-pub-quiz",
       "emoji": "",
       "color": "var(--orange)",
       "img": "images/5.jpg"
@@ -196,8 +196,8 @@
       "date": "Thu 13 Aug",
       "time": "20:30",
       "location": "Free Willy",
-      "price": "TBC",
-      "ticketUrl": "#",
+      "price": "Pay at the door",
+      "ticketUrl": "https://www.freewillie.nl/big-naked-pub-quiz",
       "emoji": "",
       "color": "var(--yellow)",
       "img": "images/6.jpg"
