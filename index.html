@@ -437,8 +437,10 @@ function renderAll(data) {
     if (data.siteConfig.footerCopy) document.getElementById('footerCopy').textContent = data.siteConfig.footerCopy;
     if (data.siteConfig.title) document.title = data.siteConfig.title;
   }
-  // Filter out past events before rendering
-  eventsData = eventsData.filter(function(ev) { return !isExpired(ev); });
+  // Filter out past events AND hidden ones
+  eventsData = eventsData.filter(function(ev) {
+  return !isExpired(ev) && !ev.hidden;
+});
   // Sort: pinned first, then by date ascending
   eventsData.sort(function(a, b) {
     if (a.pin && !b.pin) return -1;
